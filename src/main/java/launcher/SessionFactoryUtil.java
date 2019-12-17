@@ -1,4 +1,4 @@
-
+package launcher;
 import java.io.File;
 
 import org.hibernate.SessionFactory;
@@ -40,11 +40,6 @@ public class SessionFactoryUtil {
 	   {
 	      getSessionFactory().close();
 	   }
-	
-	
-	
-	
-	
 	
 	
   /*

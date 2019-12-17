@@ -2,4 +2,13 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
+
+	<table-filter match-name="administrador"
+		match-catalog="alojamientos">
+	</table-filter>
+	<table-filter match-name="alojamiento"
+		match-catalog="alojamientos">
+	</table-filter>
+	<table-filter match-name="cliente" match-catalog="alojamientos"></table-filter>
+	<table-filter match-name="reserva" match-catalog="alojamientos"></table-filter>
 </hibernate-reverse-engineering>
