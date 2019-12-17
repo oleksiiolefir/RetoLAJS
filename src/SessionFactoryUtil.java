@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.hql.internal.ast.util.SessionFactoryHelper;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+
 public class SessionFactoryUtil {
 	static Configuration configuration;
 	 private static SessionFactory sessionFactory;
@@ -42,7 +43,7 @@ public class SessionFactoryUtil {
     	SessionFactory sesion = SessionFactoryUtil.getSessionFactory();
     	Session session = sesion.openSession();
     	Transaction tx= session.beginTransaction();
-    	
+    	session.close();
     	
     	
        
