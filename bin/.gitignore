@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 /Main.class
+=======
+/hibernate.cfg.xml
+/Alojamiento.class
+/Cliente.class
+/Administrador.class
+/Reserva.class
+/Objetos/
+>>>>>>> c80d6d726c7011fda2896246fd98504120f1fbc9
