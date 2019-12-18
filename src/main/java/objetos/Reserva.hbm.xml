@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generated 17-dic-2019 13:49:49 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="alojamientos" dynamic-insert="false" dynamic-update="false" mutable="true" name="config.Reserva" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="reserva">
+    <class catalog="alojamientos" dynamic-insert="false" dynamic-update="false" mutable="true" name="objetos.Reserva" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="reserva">
         <id name="idRes" type="int">
             <column name="idRes"/>
             <generator class="assigned"/>
         </id>
-        <many-to-one class="config.Alojamiento" embed-xml="true" fetch="select" insert="true" name="alojamiento" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="objetos.Alojamiento" embed-xml="true" fetch="select" insert="true" name="alojamiento" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column name="idAloj" not-null="true"/>
         </many-to-one>
-        <many-to-one class="config.Cliente" embed-xml="true" fetch="select" insert="true" name="cliente" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="objetos.Cliente" embed-xml="true" fetch="select" insert="true" name="cliente" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column name="idCli" not-null="true"/>
         </many-to-one>
     </class>

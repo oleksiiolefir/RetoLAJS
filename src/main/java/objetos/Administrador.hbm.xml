@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generated 17-dic-2019 13:49:49 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="alojamientos" dynamic-insert="false" dynamic-update="false" mutable="true" name="config.Administrador" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="administrador">
+    <class catalog="alojamientos" dynamic-insert="false" dynamic-update="false" mutable="true" name="objetos.Administrador" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="administrador">
         <id name="idAdm" type="int">
             <column name="idAdm"/>
             <generator class="assigned"/>
