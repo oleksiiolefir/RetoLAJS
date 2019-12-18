@@ -1,8 +1,6 @@
 package objetos;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Alojamiento implements Serializable {
 
@@ -20,7 +18,6 @@ public class Alojamiento implements Serializable {
 	private int capacidad;
 	private float latitud;
 	private float longitud;
-	private Set<Reserva> reservas = new HashSet<Reserva>(0);
 
 	public Alojamiento() {
 	}
@@ -39,23 +36,6 @@ public class Alojamiento implements Serializable {
 		this.capacidad = capacidad;
 		this.latitud = latitud;
 		this.longitud = longitud;
-	}
-
-	public Alojamiento(int idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
-			String telefono, String email, String web, int capacidad, float latitud, float longitud, Set<Reserva> reservas) {
-		this.idAloj = idAloj;
-		this.tipo = tipo;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.direccion = direccion;
-		this.localidad = localidad;
-		this.telefono = telefono;
-		this.email = email;
-		this.web = web;
-		this.capacidad = capacidad;
-		this.latitud = latitud;
-		this.longitud = longitud;
-		this.reservas = reservas;
 	}
 
 	public int getIdAloj() {
@@ -152,14 +132,6 @@ public class Alojamiento implements Serializable {
 
 	public void setLongitud(float longitud) {
 		this.longitud = longitud;
-	}
-
-	public Set<Reserva> getReservas() {
-		return this.reservas;
-	}
-
-	public void setReservas(Set<Reserva> reservas) {
-		this.reservas = reservas;
 	}
 
 }

@@ -14,7 +14,7 @@ public class Main {
 		Session session = sessionFactory.openSession();
 		
 		Transaction tx= session.beginTransaction();
-		Administrador admini = new Administrador(1);
+		Administrador admini = new Administrador(7/*, "jon", "1234"*/);
 		session.save(admini);
 		tx.commit();
 	}
