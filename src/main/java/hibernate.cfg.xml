@@ -3,7 +3,7 @@
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory name="">
-  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
   <property name="hibernate.connection.password">lajs</property>
   <property name="hibernate.connection.url">jdbc:mysql://192.168.101.35:3306/alojamientos?serverTimezone=UTC</property>
   <property name="hibernate.connection.username">lajs</property>

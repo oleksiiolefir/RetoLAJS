@@ -1,25 +1,30 @@
 package objetos;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Cliente")
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int idCli;
-	private Set<Reserva> reservas = new HashSet<Reserva>(0);
-
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idCli", unique=true, nullable=false) private int idCli;
+	@Column(name="username", unique=true, length=50) private String username;
+	@Column(name="password", unique=false, length=50) private String password;
+	
 	public Cliente() {
 	}
 
 	public Cliente(int idCli) {
 		this.idCli = idCli;
-	}
-
-	public Cliente(int idCli, Set<Reserva> reservas) {
-		this.idCli = idCli;
-		this.reservas = reservas;
 	}
 
 	public int getIdCli() {
@@ -30,12 +35,20 @@ public class Cliente implements Serializable {
 		this.idCli = idCli;
 	}
 
-	public Set<Reserva> getReservas() {
-		return this.reservas;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setReservas(Set<Reserva> reservas) {
-		this.reservas = reservas;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

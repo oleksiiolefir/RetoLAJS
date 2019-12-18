@@ -2,22 +2,32 @@ package objetos;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Alojamiento")
 public class Alojamiento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int idAloj;
-	private String tipo;
-	private String nombre;
-	private String descripcion;
-	private String direccion;
-	private String localidad;
-	private String telefono;
-	private String email;
-	private String web;
-	private int capacidad;
-	private float latitud;
-	private float longitud;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name="idAloj", unique=true, nullable=false) private int idAloj;
+	@Column(name="tipo", length=50) private String tipo;
+	@Column(name="nombre", length=50) private String nombre;
+	@Column(name="descripcion", length=2000) private String descripcion;
+	@Column(name="direccion", length=50) private String direccion;
+	@Column(name="localidad", length=50) private String localidad;
+	@Column(name="telefono", length=50) private String telefono;
+	@Column(name="email", length=50) private String email;
+	@Column(name="web", length=50) private String web;
+	@Column(name="capacidad") private int capacidad;
+	@Column(name="latitud") private float latitud;
+	@Column(name="longitud") private float longitud;
 
 	public Alojamiento() {
 	}

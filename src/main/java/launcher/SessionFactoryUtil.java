@@ -19,6 +19,9 @@ public class SessionFactoryUtil {
 	         {
 	            Configuration configuration = new Configuration().configure(new File("src/main/java/hibernate.cfg.xml"));
 	            configuration.addAnnotatedClass(objetos.Administrador.class);
+	            configuration.addAnnotatedClass(objetos.Cliente.class);
+	            configuration.addAnnotatedClass(objetos.Alojamiento.class);
+	            configuration.addAnnotatedClass(objetos.Reserva.class);
 	            StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
 	            serviceRegistryBuilder.applySettings(configuration.getProperties());
 	            ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
