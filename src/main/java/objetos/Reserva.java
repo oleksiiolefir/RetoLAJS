@@ -2,13 +2,23 @@ package objetos;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Reserva")
 public class Reserva implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int idRes;
-	private Alojamiento alojamiento;
-	private Cliente cliente;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idRes", unique=true, nullable=false) private int idRes;
+	@Column(name="idAloj") private Alojamiento alojamiento;
+	@Column(name="idCli") private Cliente cliente;
 
 	public Reserva() {
 	}

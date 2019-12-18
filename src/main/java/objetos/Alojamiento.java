@@ -1,26 +1,33 @@
 package objetos;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Alojamiento")
 public class Alojamiento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int idAloj;
-	private String tipo;
-	private String nombre;
-	private String descripcion;
-	private String direccion;
-	private String localidad;
-	private String telefono;
-	private String email;
-	private String web;
-	private int capacidad;
-	private float latitud;
-	private float longitud;
-	private Set<Reserva> reservas = new HashSet<Reserva>(0);
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name="idAloj", unique=true, nullable=false) private int idAloj;
+	@Column(name="tipo", length=50) private String tipo;
+	@Column(name="nombre", length=50) private String nombre;
+	@Column(name="descripcion", length=2000) private String descripcion;
+	@Column(name="direccion", length=50) private String direccion;
+	@Column(name="localidad", length=50) private String localidad;
+	@Column(name="telefono", length=50) private String telefono;
+	@Column(name="email", length=50) private String email;
+	@Column(name="web", length=50) private String web;
+	@Column(name="capacidad") private int capacidad;
+	@Column(name="latitud") private float latitud;
+	@Column(name="longitud") private float longitud;
 
 	public Alojamiento() {
 	}
@@ -39,23 +46,6 @@ public class Alojamiento implements Serializable {
 		this.capacidad = capacidad;
 		this.latitud = latitud;
 		this.longitud = longitud;
-	}
-
-	public Alojamiento(int idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
-			String telefono, String email, String web, int capacidad, float latitud, float longitud, Set<Reserva> reservas) {
-		this.idAloj = idAloj;
-		this.tipo = tipo;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.direccion = direccion;
-		this.localidad = localidad;
-		this.telefono = telefono;
-		this.email = email;
-		this.web = web;
-		this.capacidad = capacidad;
-		this.latitud = latitud;
-		this.longitud = longitud;
-		this.reservas = reservas;
 	}
 
 	public int getIdAloj() {
@@ -152,14 +142,6 @@ public class Alojamiento implements Serializable {
 
 	public void setLongitud(float longitud) {
 		this.longitud = longitud;
-	}
-
-	public Set<Reserva> getReservas() {
-		return this.reservas;
-	}
-
-	public void setReservas(Set<Reserva> reservas) {
-		this.reservas = reservas;
 	}
 
 }
