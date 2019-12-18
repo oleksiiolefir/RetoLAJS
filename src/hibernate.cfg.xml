@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.password">lajs</property>
-        <property name="hibernate.connection.url">jdbc:mysql://192.168.101.35:3306/alojamientos?serverTimezone=UTC</property>
-        <property name="hibernate.connection.username">lajs</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.search.autoregister_listeners">true</property>
-        <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping resource="objetos/Cliente.hbm.xml"/>
-        <mapping resource="objetos/Administrador.hbm.xml"/>
-        <mapping resource="objetos/Alojamiento.hbm.xml"/>
-        <mapping resource="objetos/Reserva.hbm.xml"/>
-    </session-factory>
+ <session-factory name="">
+  <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+  <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+  <property name="hibernate.connection.password">lajs</property>
+  <property name="hibernate.connection.url">jdbc:mysql://192.168.101.35:3306/alojamientos?serverTimezone=UTC</property>
+  <property name="hibernate.connection.username">lajs</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="hibernate.search.autoregister_listeners">true</property>
+  <property name="hibernate.validator.apply_to_ddl">false</property>
+  <mapping resource="objetos/Cliente.hbm.xml"/>
+  <mapping resource="objetos/Administrador.hbm.xml"/>
+  <mapping resource="objetos/Alojamiento.hbm.xml"/>
+  <mapping resource="objetos/Reserva.hbm.xml"/>
+ </session-factory>
 </hibernate-configuration>

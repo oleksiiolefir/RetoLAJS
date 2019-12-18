@@ -14,10 +14,9 @@ public class Main {
 		Session session = sessionFactory.openSession();
 		
 		Transaction tx= session.beginTransaction();
-		Administrador admini = new Administrador();
-		
-		
-
+		Administrador admini = new Administrador(1);
+		session.save(admini);
+		tx.commit();
 	}
 
 }
