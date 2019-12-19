@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +29,8 @@ public class Alojamiento implements Serializable {
 	@Column(name="capacidad") private int capacidad;
 	@Column(name="latitud") private float latitud;
 	@Column(name="longitud") private float longitud;
+	
+	
 
 	public Alojamiento() {
 	}

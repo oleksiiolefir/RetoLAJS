@@ -20,14 +20,14 @@ import objetos.Alojamiento;
 
 public class DescargaWeb {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		DescargaWeb descarga = new DescargaWeb();
 		File archivo = new File("landerArchivo.xml");
 		ArrayList<Alojamiento> aloj = new ArrayList<Alojamiento>();
 		descarga.hacerDescarga(archivo);
 		descarga.leerTag(archivo, aloj);
 		
-	}
+	}*/
 	
 	public void hacerDescarga(File archivo) {
 		try {
@@ -47,7 +47,7 @@ public class DescargaWeb {
 		}
 	}
 	
-	public void leerTag(File archivo, ArrayList<Alojamiento> aloj) {
+	public ArrayList<Alojamiento> leerTag(File archivo, ArrayList<Alojamiento> aloj) {
 		try {            
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
@@ -67,6 +67,7 @@ public class DescargaWeb {
                 
                 if(nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) nodo;
+                    aloj1.setIdAloj(i);
                     try {                 	
                         aloj1.setTipo(element.getElementsByTagName("templatetype").item(0).getTextContent());
                         String aa = aloj1.getTipo();
@@ -142,11 +143,13 @@ public class DescargaWeb {
                 }
                 
                 aloj.add(aloj1);
+              
             }
             
         } catch(Exception e) {
             e.printStackTrace();
         }
+		return aloj;
 	}
 	
 	public void llerTags2(File archivo) {

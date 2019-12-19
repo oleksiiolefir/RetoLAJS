@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,8 @@ public class Cliente implements Serializable {
 	@Column(name="idCli", unique=true, nullable=false) private int idCli;
 	@Column(name="username", unique=true, length=50) private String username;
 	@Column(name="password", unique=false, length=50) private String password;
+	
+	 
 	
 	public Cliente() {
 	}
