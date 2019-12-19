@@ -6,10 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import objetos.Administrador;
 import objetos.Alojamiento;
-
-import objetos.Reserva;
 
 
 public class Main {
@@ -20,6 +17,7 @@ public class Main {
         Session session = sessionFactory.openSession();
 		
 		Transaction tx= session.beginTransaction();
+		
 		DescargaWeb descarga = new DescargaWeb();
 		File archivo = new File("alojTuristicos.xml");
 		File archivo1 = new File("alojRural.xml");
@@ -54,6 +52,8 @@ public class Main {
 			session.save(camping.get(i));
 		}
 		System.out.println("CANTIDAD:"+alojT.size()+"  y "+alojR.size()+" Y "+camping.size());
+		
+		
 		tx.commit();
 		session.close();
 		

@@ -1,26 +1,34 @@
 package objetos;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cliente")
+@Table(name="CLIENTE")
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idCli", unique=true, nullable=false) private int idCli;
-	@Column(name="username", unique=true, length=50) private String username;
-	@Column(name="password", unique=false, length=50) private String password;
+	@Column(name="idCli", unique=true, nullable=false) 
+	private int idCli;
 	
+	@Column(name="username", unique=true, length=50) 
+	private String username;
+	
+	@Column(name="password", unique=false, length=50) 
+	private String password;
+	
+	@OneToMany(mappedBy="cliente") 
+	private Set<Reserva> reservas;
 	 
 	
 	public Cliente() {
@@ -55,4 +63,7 @@ public class Cliente implements Serializable {
 		this.password = password;
 	}
 
+	public Set<Reserva> getReservas(){
+		return reservas;
+	}
 }

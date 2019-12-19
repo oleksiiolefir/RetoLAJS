@@ -10,19 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Administrador"/*, uniqueConstraints = {
- @UniqueConstraint(columnNames = "idAdm"),
- @UniqueConstraint(columnNames = "username"),
- @UniqueConstraint(columnNames = "password")}*/)
+@Table(name="ADMINISTRADOR")
 
 public class Administrador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idAdm", unique=true, nullable=false) private int idAdm;
-	@Column(name="username", unique=true, length=50) private String username;
-	@Column(name="password", unique=false, length=50) private String password;
+	@Column(name="idAdm", unique=true, nullable=false) 
+	private int idAdm;
+	
+	@Column(name="username", unique=true, length=50) 
+	private String username;
+	
+	@Column(name="password", unique=false, length=50) 
+	private String password;
 
 	public Administrador() {
 	}
