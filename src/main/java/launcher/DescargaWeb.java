@@ -22,16 +22,32 @@ public class DescargaWeb {
 
 	/*public static void main(String[] args) {
 		DescargaWeb descarga = new DescargaWeb();
-		File archivo = new File("landerArchivo.xml");
+		File archivo = new File("alojTuristicos.xml");
+		File archivo1 = new File("alojRural.xml");
+		File archivo2 = new File("campings.xml");
 		ArrayList<Alojamiento> aloj = new ArrayList<Alojamiento>();
 		descarga.hacerDescarga(archivo);
+		descarga.hacerDescarga(archivo1);
+		descarga.hacerDescarga(archivo2);
 		descarga.leerTag(archivo, aloj);
+		descarga.leerTag(archivo1, aloj);
+		descarga.leerTag(archivo2, aloj);
+		System.out.println(aloj.size());
 		
 	}*/
 	
 	public void hacerDescarga(File archivo) {
 		try {
-			URL url = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/hoteles_de_euskadi/opendata/alojamientos.xml");			
+			URL url = null;
+			System.out.println(archivo.getName());
+			if(archivo.getName()=="alojTuristicos.xml") {
+				url = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/alojamiento_de_euskadi/opendata/alojamientos.xml");
+			}else if(archivo.getName()=="alojRural.xml") {
+				url = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/alojamientos_rurales_euskadi/opendata/alojamientos.xml");
+			}else if(archivo.getName()=="campings.xml") {
+				url = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/campings_de_euskadi/opendata/alojamientos.xml");
+			}
+			
 			BufferedReader bf = new BufferedReader(new InputStreamReader(url.openStream()));
 			
 			BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
@@ -70,7 +86,6 @@ public class DescargaWeb {
                     aloj1.setIdAloj(i);
                     try {                 	
                         aloj1.setTipo(element.getElementsByTagName("templatetype").item(0).getTextContent());
-                        String aa = aloj1.getTipo();
                     }catch(Exception ex){
                     	aloj1.setTipo(" ");
                     }
@@ -86,7 +101,6 @@ public class DescargaWeb {
                     }
                     try {
                     	aloj1.setDireccion(element.getElementsByTagName("address").item(0).getTextContent());
-                    	String aa = aloj1.getTipo();
                     }catch(Exception ex){
                     	aloj1.setDireccion(" ");
                     }    
@@ -96,7 +110,7 @@ public class DescargaWeb {
                     	aloj1.setLocalidad(" ");
                     }
                     try {
-                        aloj1.setTelefono(element.getElementsByTagName("phone").item(0).getTextContent());
+                        aloj1.setTelefono(element.getElementsByTagName("phone").item(0).getTextContent().replace(" ",""));
                     }catch(Exception ex){
                     	aloj1.setTelefono(" ");
                     }

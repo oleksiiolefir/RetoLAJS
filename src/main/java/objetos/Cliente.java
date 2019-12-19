@@ -26,8 +26,9 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(int idCli) {
+	public Cliente(int idCli,String username) {
 		this.idCli = idCli;
+		this.username = username;
 	}
 
 	public int getIdCli() {
