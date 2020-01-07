@@ -15,7 +15,6 @@ public class Main {
 		// TODO Auto-generated method stub
 		SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory(); 
         Session session = sessionFactory.openSession();
-		
 		Transaction tx= session.beginTransaction();
 		
 		DescargaWeb descarga = new DescargaWeb();
@@ -29,17 +28,16 @@ public class Main {
 		descarga.hacerDescarga(archivo1);
 		descarga.hacerDescarga(archivo2);
 		
+		
 		alojT=descarga.leerTag(archivo, alojT);
-		
 		alojR=descarga.leerTag(archivo1, alojR);
-		
 		camping=descarga.leerTag(archivo2, camping);
-		//System.out.println("CANTIDAD:"+alojT.size());
+	
 		
 		
 		
 		
-		for (int i=0;i<alojT.size()-1;i++) {
+		/*for (int i=0;i<alojT.size()-1;i++) {
 			
 			session.save(alojT.get(i));
 		}
@@ -50,8 +48,8 @@ public class Main {
 		for (int i=0;i<camping.size()-1;i++) {
 	
 			session.save(camping.get(i));
-		}
-		System.out.println("CANTIDAD:"+alojT.size()+"  y "+alojR.size()+" Y "+camping.size());
+		}*/
+		
 		
 		
 		tx.commit();

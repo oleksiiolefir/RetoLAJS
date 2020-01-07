@@ -20,21 +20,6 @@ import objetos.Alojamiento;
 
 public class DescargaWeb {
 
-	/*public static void main(String[] args) {
-		DescargaWeb descarga = new DescargaWeb();
-		File archivo = new File("alojTuristicos.xml");
-		File archivo1 = new File("alojRural.xml");
-		File archivo2 = new File("campings.xml");
-		ArrayList<Alojamiento> aloj = new ArrayList<Alojamiento>();
-		descarga.hacerDescarga(archivo);
-		descarga.hacerDescarga(archivo1);
-		descarga.hacerDescarga(archivo2);
-		descarga.leerTag(archivo, aloj);
-		descarga.leerTag(archivo1, aloj);
-		descarga.leerTag(archivo2, aloj);
-		System.out.println(aloj.size());
-		
-	}*/
 	
 	public void hacerDescarga(File archivo) {
 		try {
@@ -72,7 +57,7 @@ public class DescargaWeb {
             
             document.getDocumentElement().normalize();
             
-            System.out.println("Elemento raiz: " + document.getDocumentElement().getNodeName());
+          
             
             NodeList listaUsuarios = document.getElementsByTagName("row");
             System.out.println(listaUsuarios.getLength());
