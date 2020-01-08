@@ -90,7 +90,7 @@ public class DescargaWeb {
                     	aloj1.setDireccion(" ");
                     }    
                     try {
-                        aloj1.setLocalidad(element.getElementsByTagName("marks").item(0).getTextContent());
+                        aloj1.setLocalidad(element.getElementsByTagName("municipality").item(0).getTextContent());
                     }catch(Exception ex){
                     	aloj1.setLocalidad(" ");
                     }

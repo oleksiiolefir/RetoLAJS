@@ -1,7 +1,7 @@
 package objetos;
 
 import java.io.Serializable;
-
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,14 +27,19 @@ public class Reserva implements Serializable {
 	@ManyToOne @JoinColumn(name="idCli",nullable=false) 
 	private Cliente cliente;
 	
+	@Column(name="fechaEntrada", nullable=false) private Date fechaEntrada;
+	@Column(name="fechaSalida", nullable=false) private Date fechaSalida;
+	
+
 	public Reserva() {
 	}
 
-	public Reserva(int idRes, Alojamiento alojamiento, Cliente cliente) {
-		super();
+	public Reserva(int idRes, Alojamiento alojamiento, Cliente cliente, Date fechaEntrada, Date fechaSalida) {
 		this.idRes = idRes;
 		this.alojamiento = alojamiento;
 		this.cliente = cliente;
+		this.fechaEntrada = fechaEntrada;
+		this.fechaSalida = fechaSalida;
 	}
 
 	public int getIdRes() {
@@ -61,4 +66,19 @@ public class Reserva implements Serializable {
 		this.cliente = cliente;
 	}
 
+	public Date getFechaEntrada() {
+		return fechaEntrada;
+	}
+	
+	public void setFechaEntrada(Date fechaEntrada) {
+		this.fechaEntrada = fechaEntrada;
+	}
+	
+	public Date getFechaSalida() {
+		return fechaSalida;
+	}
+	
+	public void setFechaSalida(Date fechaSalida) {
+		this.fechaSalida = fechaSalida;
+	}
 }
