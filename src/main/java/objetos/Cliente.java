@@ -32,7 +32,6 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy="cliente") 
 	private Set<Reserva> reservas;
 	 
-	
 	public Cliente() {
 	}
 
