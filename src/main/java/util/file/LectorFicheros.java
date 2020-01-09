@@ -16,7 +16,7 @@ public class LectorFicheros {
 	}
 
 	public boolean abrirFichero(String ruta) {
-		if (fichero != null) {
+		if (fichero == null) {
 			fichero = new File(ruta);
 			if (!fichero.exists())
 				if (crearFichero())
@@ -37,6 +37,31 @@ public class LectorFicheros {
 		}
 	}
 
+	public boolean escribirFichero() {
+		String cadena;
+		try {
+			while((cadena = bReader.readLine())!=null) {
+				try {
+					bWriter.write(cadena);
+				} catch (IOException e) {
+					e.printStackTrace();
+					return false;
+				}
+			}
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try {
+				bReader.close();
+				bWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public boolean cerrarFichero() {
 		if (fichero != null) {
 			fichero = null;
