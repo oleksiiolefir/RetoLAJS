@@ -5,8 +5,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,16 +15,17 @@ public class Alojamiento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
-	@Column(name="idAloj", unique=true, nullable=false) private int idAloj;
+	@Id
+	@Column(name="idAloj", unique=true, nullable=false) private String idAloj;
 	@Column(name="tipo", length=50) private String tipo;
-	@Column(name="nombre", length=50) private String nombre;
+	@Column(name="nombre", length=100) private String nombre;
 	@Column(name="descripcion", length=2000) private String descripcion;
 	@Column(name="direccion", length=50) private String direccion;
 	@Column(name="localidad", length=50) private String localidad;
+	@Column(name="provincia", length=50) private String provincia;
 	@Column(name="telefono", length=50) private String telefono;
-	@Column(name="email", length=50) private String email;
-	@Column(name="web", length=50) private String web;
+	@Column(name="email", length=100) private String email;
+	@Column(name="web", length=200) private String web;
 	@Column(name="capacidad") private int capacidad;
 	@Column(name="latitud") private float latitud;
 	@Column(name="longitud") private float longitud;
@@ -37,14 +36,15 @@ public class Alojamiento implements Serializable {
 	public Alojamiento() {
 	}
 
-	public Alojamiento(int idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
-			String telefono, String email, String web, int capacidad, float latitud, float longitud) {
+	public Alojamiento(String idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
+			String provincia, String telefono, String email, String web, int capacidad, float latitud, float longitud) {
 		this.idAloj = idAloj;
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.direccion = direccion;
 		this.localidad = localidad;
+		this.provincia = provincia;
 		this.telefono = telefono;
 		this.email = email;
 		this.web = web;
@@ -53,11 +53,11 @@ public class Alojamiento implements Serializable {
 		this.longitud = longitud;
 	}
 
-	public int getIdAloj() {
+	public String getIdAloj() {
 		return this.idAloj;
 	}
 
-	public void setIdAloj(int idAloj) {
+	public void setIdAloj(String idAloj) {
 		this.idAloj = idAloj;
 	}
 
@@ -100,7 +100,15 @@ public class Alojamiento implements Serializable {
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
+	
+	public String getProvincia() {
+		return this.provincia;
+	}
 
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+	
 	public String getTelefono() {
 		return this.telefono;
 	}

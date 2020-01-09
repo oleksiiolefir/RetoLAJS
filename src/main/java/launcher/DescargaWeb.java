@@ -4,22 +4,79 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import objetos.Alojamiento;
 
 public class DescargaWeb {
 
+	private BufferedReader bReader;
+	private BufferedWriter bWriter;
+	
+	public void descargarURL(URL url, File archivo) {
+		try {
+			bReader = new BufferedReader(new InputStreamReader(url.openStream()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		try {
+			bWriter = new BufferedWriter(new FileWriter(archivo));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		escribirFichero();
+		NodeList nodeList = leerNodosXML(archivo);
+		leerTags(nodeList);
+	}
+	
+	private void leerTags(NodeList nodeList) {
+		for(int i=0;i<nodeList.getLength();i++) {
+			Node node = nodeList.item(i);
+			if(node.getNodeType()==Node.ELEMENT_NODE) {
+				getTagContent((Element) node, "signatura");
+			}
+		}
+	}
+
+	private String getTagContent(Element element, String tag) {
+		return element.getElementsByTagName(tag).item(0).getTextContent();
+		
+	}
+
+	public void escribirFichero() {
+		String cadena;
+		try {
+			while((cadena = bReader.readLine())!=null) {
+				try {
+					bWriter.write(cadena);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bReader.close();
+				bWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	public void hacerDescarga(File archivo) {
 		try {
@@ -48,29 +105,51 @@ public class DescargaWeb {
 		}
 	}
 	
+	public NodeList leerNodosXML(File archivo) {
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = null;
+		try {
+			documentBuilder = factory.newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}
+        Document document = null;
+		try {
+			document = documentBuilder.parse(archivo);
+		} catch (SAXException | IOException e) {
+			e.printStackTrace();
+		}
+        System.out.println(archivo.getAbsolutePath());
+        document.getDocumentElement().normalize();
+        NodeList nodos = document.getElementsByTagName("row");
+        return nodos;
+	}
+	
 	public ArrayList<Alojamiento> leerTag(File archivo, ArrayList<Alojamiento> aloj) {
-		try {            
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		try {                  
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(archivo);
             System.out.println(archivo.getAbsolutePath());
             
             document.getDocumentElement().normalize();
             
-          
-            
             NodeList listaUsuarios = document.getElementsByTagName("row");
             System.out.println(listaUsuarios.getLength());
             for(int i = 0 ; i < listaUsuarios.getLength() ; i++) {
             	Alojamiento aloj1 = new Alojamiento();
                 Node nodo = listaUsuarios.item(i);
-                System.out.println("Elemento: " + nodo.getNodeName());
+                //System.out.println("Elemento: " + nodo.getNodeName());
                 
                 if(nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) nodo;
-                    aloj1.setIdAloj(i);
+                    try {
+                    	aloj1.setIdAloj(element.getElementsByTagName("signatura").item(0).getTextContent());
+                    }catch(Exception ex) {                    	
+                    	aloj1.setIdAloj(String.valueOf(i));
+                    }
                     try {                 	
-                        aloj1.setTipo(element.getElementsByTagName("templatetype").item(0).getTextContent());
+                        aloj1.setTipo(element.getElementsByTagName("lodgingtype").item(0).getTextContent());
                     }catch(Exception ex){
                     	aloj1.setTipo(" ");
                     }
@@ -93,6 +172,11 @@ public class DescargaWeb {
                         aloj1.setLocalidad(element.getElementsByTagName("municipality").item(0).getTextContent());
                     }catch(Exception ex){
                     	aloj1.setLocalidad(" ");
+                    }
+                    try {
+                        aloj1.setProvincia(element.getElementsByTagName("territory").item(0).getTextContent());
+                    }catch(Exception ex){
+                    	aloj1.setProvincia(" ");
                     }
                     try {
                         aloj1.setTelefono(element.getElementsByTagName("phone").item(0).getTextContent().replace(" ",""));
@@ -125,34 +209,28 @@ public class DescargaWeb {
                     	aloj1.setLongitud(0);
                     }
 
-                    System.out.println(aloj1.getTipo());
-                    System.out.println(aloj1.getNombre());
-                    System.out.println(aloj1.getDescripcion());
-                    System.out.println(aloj1.getDireccion());
-                    System.out.println(aloj1.getLocalidad());
-                    System.out.println(aloj1.getTelefono());
-                    System.out.println(aloj1.getEmail());
-                    System.out.println(aloj1.getWeb());
-                    System.out.println(aloj1.getCapacidad());
-                    System.out.println(aloj1.getLatitud());
-                    System.out.println(aloj1.getLongitud());
-
-                    System.out.println("");
-                    
                 }
-                
                 aloj.add(aloj1);
-              
             }
+            eliminarDuplicados(aloj);
             
         } catch(Exception e) {
             e.printStackTrace();
         }
 		return aloj;
 	}
-	
-	public void llerTags2(File archivo) {
-		
-	}
 
+	private void eliminarDuplicados(ArrayList<Alojamiento> list) {
+		
+		for(int i=0;i<list.size();i++) {
+			for(int j=i;j<list.size()-1;j++) {
+				if(list.get(i).getIdAloj().equals(list.get(j+1).getIdAloj())) {
+					list.remove(j+1);
+					System.out.println("Borrado " + (j+1));
+					//break;
+				}
+			}
+		}	
+	}
+	
 }

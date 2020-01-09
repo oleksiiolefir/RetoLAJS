@@ -1,6 +1,7 @@
 package objetos;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -21,11 +22,12 @@ public class Cliente implements Serializable {
 	@Column(name="idCli", unique=true, nullable=false) 
 	private int idCli;
 	
-	@Column(name="username", unique=true, length=50) 
-	private String username;
-	
-	@Column(name="password", unique=false, length=50) 
-	private String password;
+	@Column(name="username", unique=true, length=50) private String username;
+	@Column(name="password", unique=false, length=50) private String password;
+	@Column(name="nombre", length=50) private String nombre;
+	@Column(name="apellidos", length=100) private String apellidos;
+	@Column(name="dni", length=10) private String dni;
+	@Column(name="fechaNac") private Date fechaNac;
 	
 	@OneToMany(mappedBy="cliente") 
 	private Set<Reserva> reservas;
@@ -34,9 +36,15 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(int idCli,String username) {
+	public Cliente(int idCli, String username, String password, String nombre, String apellidos, String dni,
+			Date fechaNac) {
 		this.idCli = idCli;
 		this.username = username;
+		this.password = password;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.dni = dni;
+		this.fechaNac = fechaNac;
 	}
 
 	public int getIdCli() {
@@ -61,6 +69,38 @@ public class Cliente implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
 	}
 
 	public Set<Reserva> getReservas(){
