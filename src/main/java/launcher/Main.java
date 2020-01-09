@@ -37,7 +37,7 @@ public class Main {
 		
 		
 		
-		/*for (int i=0;i<alojT.size()-1;i++) {
+		for (int i=0;i<alojT.size()-1;i++) {
 			
 			session.save(alojT.get(i));
 		}
@@ -48,7 +48,7 @@ public class Main {
 		for (int i=0;i<camping.size()-1;i++) {
 	
 			session.save(camping.get(i));
-		}*/
+		}
 		
 		
 		

@@ -20,13 +20,13 @@ public class Alojamiento implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name="idAloj", unique=true, nullable=false) private int idAloj;
 	@Column(name="tipo", length=50) private String tipo;
-	@Column(name="nombre", length=50) private String nombre;
+	@Column(name="nombre", length=100) private String nombre;
 	@Column(name="descripcion", length=2000) private String descripcion;
 	@Column(name="direccion", length=50) private String direccion;
 	@Column(name="localidad", length=50) private String localidad;
 	@Column(name="telefono", length=50) private String telefono;
-	@Column(name="email", length=50) private String email;
-	@Column(name="web", length=50) private String web;
+	@Column(name="email", length=100) private String email;
+	@Column(name="web", length=200) private String web;
 	@Column(name="capacidad") private int capacidad;
 	@Column(name="latitud") private float latitud;
 	@Column(name="longitud") private float longitud;
