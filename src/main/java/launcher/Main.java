@@ -13,10 +13,8 @@ import objetos.Alojamiento;
 public class Main {
 
 	public static void main(String[] args) {
-		SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory(); 
-        Session session = sessionFactory.openSession();
-		Transaction tx= session.beginTransaction();
-		
+			
+		/*
 		DescargaWeb descarga = new DescargaWeb();
 		File archivo = new File("alojTuristicos.xml");
 		File archivo1 = new File("alojRural.xml");
@@ -38,6 +36,9 @@ public class Main {
 		alojR=descarga.leerTag(archivo1, alojR);
 		camping=descarga.leerTag(archivo2, camping);
 		
+		SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory(); 
+		Session session = sessionFactory.openSession();
+		Transaction tx= session.beginTransaction();
 		for (int i=0;i<alojT.size()-1;i++) {		
 			session.save(alojT.get(i));
 		}
@@ -50,7 +51,24 @@ public class Main {
 		
 		tx.commit();
 		session.close();
-
+*/
+	}
+	
+	public static void cargarAlojamientos() {
+		
 	}
 
+	public static void generarJson() {
+		
+	}
+	
+	public static void insertarDatosBD(ArrayList<Alojamiento> alojamientos) {
+		SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory(); 
+		Session session = sessionFactory.openSession();
+		Transaction tx= session.beginTransaction();
+		for(Alojamiento alojamiento:alojamientos)
+			session.save(alojamiento);
+		tx.commit();
+		session.close();
+	}
 }

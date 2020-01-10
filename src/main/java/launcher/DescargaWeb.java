@@ -37,9 +37,9 @@ public class DescargaWeb {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		escribirFichero();
-		NodeList nodeList = leerNodosXML(archivo);
-		leerTags(nodeList);
+		//escribirFichero();
+		//NodeList nodeList = leerNodosXML(archivo);
+		//leerTags(nodeList);
 	}
 	
 	private void leerTags(NodeList nodeList) {
@@ -54,28 +54,6 @@ public class DescargaWeb {
 	private String getTagContent(Element element, String tag) {
 		return element.getElementsByTagName(tag).item(0).getTextContent();
 		
-	}
-
-	public void escribirFichero() {
-		String cadena;
-		try {
-			while((cadena = bReader.readLine())!=null) {
-				try {
-					bWriter.write(cadena);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				bReader.close();
-				bWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 	
 	public void hacerDescarga(File archivo) {
@@ -105,26 +83,6 @@ public class DescargaWeb {
 		}
 	}
 	
-	public NodeList leerNodosXML(File archivo) {
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder documentBuilder = null;
-		try {
-			documentBuilder = factory.newDocumentBuilder();
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		}
-        Document document = null;
-		try {
-			document = documentBuilder.parse(archivo);
-		} catch (SAXException | IOException e) {
-			e.printStackTrace();
-		}
-        System.out.println(archivo.getAbsolutePath());
-        document.getDocumentElement().normalize();
-        NodeList nodos = document.getElementsByTagName("row");
-        return nodos;
-	}
-	
 	public ArrayList<Alojamiento> leerTag(File archivo, ArrayList<Alojamiento> aloj) {
 		try {                  
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -139,6 +97,7 @@ public class DescargaWeb {
             for(int i = 0 ; i < listaUsuarios.getLength() ; i++) {
             	Alojamiento aloj1 = new Alojamiento();
                 Node nodo = listaUsuarios.item(i);
+                
                 //System.out.println("Elemento: " + nodo.getNodeName());
                 
                 if(nodo.getNodeType() == Node.ELEMENT_NODE) {

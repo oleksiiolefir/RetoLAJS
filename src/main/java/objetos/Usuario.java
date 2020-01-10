@@ -13,15 +13,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CLIENTE")
-public class Cliente implements Serializable {
+@Table(name="USUARIO")
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idCli", unique=true, nullable=false) 
-	private int idCli;
+	@Column(name="idUsr", unique=true, nullable=false) 
+	private int idUsr;
 	
+	@Column(name="isadmin") private boolean admin;
 	@Column(name="username", unique=true, length=50) private String username;
 	@Column(name="password", unique=false, length=50) private String password;
 	@Column(name="nombre", length=50) private String nombre;
@@ -32,12 +33,12 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy="cliente") 
 	private Set<Reserva> reservas;
 	 
-	public Cliente() {
+	public Usuario() {
 	}
 
-	public Cliente(int idCli, String username, String password, String nombre, String apellidos, String dni,
+	public Usuario(int idUsr, String username, String password, String nombre, String apellidos, String dni,
 			Date fechaNac) {
-		this.idCli = idCli;
+		this.idUsr = idUsr;
 		this.username = username;
 		this.password = password;
 		this.nombre = nombre;
@@ -46,12 +47,12 @@ public class Cliente implements Serializable {
 		this.fechaNac = fechaNac;
 	}
 
-	public int getIdCli() {
-		return this.idCli;
+	public int getidUsr() {
+		return this.idUsr;
 	}
 
-	public void setIdCli(int idCli) {
-		this.idCli = idCli;
+	public void setidUsr(int idUsr) {
+		this.idUsr = idUsr;
 	}
 
 	public String getUsername() {

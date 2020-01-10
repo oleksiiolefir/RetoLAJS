@@ -25,7 +25,7 @@ public class Reserva implements Serializable {
 	private Alojamiento alojamiento;
 
 	@ManyToOne @JoinColumn(name="idCli",nullable=false) 
-	private Cliente cliente;
+	private Usuario cliente;
 	
 	@Column(name="fechaEntrada", nullable=false) private Date fechaEntrada;
 	@Column(name="fechaSalida", nullable=false) private Date fechaSalida;
@@ -34,7 +34,7 @@ public class Reserva implements Serializable {
 	public Reserva() {
 	}
 
-	public Reserva(int idRes, Alojamiento alojamiento, Cliente cliente, Date fechaEntrada, Date fechaSalida) {
+	public Reserva(int idRes, Alojamiento alojamiento, Usuario cliente, Date fechaEntrada, Date fechaSalida) {
 		this.idRes = idRes;
 		this.alojamiento = alojamiento;
 		this.cliente = cliente;
@@ -58,11 +58,11 @@ public class Reserva implements Serializable {
 		this.alojamiento = alojamiento;
 	}
 
-	public Cliente getCliente() {
+	public Usuario getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Usuario cliente) {
 		this.cliente = cliente;
 	}
 
