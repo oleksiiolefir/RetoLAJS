@@ -1,22 +1,19 @@
-package launcher;
+package util.file;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 
-import com.google.gson.Gson;
+public class GestorFicherosJSON extends GestorFicheros {
 
-import objetos.Alojamiento;
-
-public class GuardarJson {
-
-	public static void main(String[] args) {
-		guardaJsonCamping();
-		guardaJsonTuristicos();
-		guardaJsonRural();
+	public GestorFicherosJSON(File fichero) {
+		super(fichero);
 	}
-
+	
+	@Override
+	public boolean escribirFichero() {
+		return false;
+		
+	}
+/*
 	public static void guardaJsonCamping() {
 		ArrayList<Alojamiento> al = new ArrayList<Alojamiento>();
 		DescargaWeb dw = new DescargaWeb();
@@ -95,5 +92,5 @@ public class GuardarJson {
 
 		System.out.println(new Gson().toJson(al));
 
-	}
+	}*/
 }
