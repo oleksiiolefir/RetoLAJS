@@ -26,7 +26,7 @@ public class DescargaWeb {
 			URL url = null;
 			System.out.println(archivo.getName());
 			if(archivo.getName()=="alojTuristicos.xml") {
-				url = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/alojamiento_de_euskadi/opendata/alojamientos.xml");
+				url = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/albergues_de_euskadi/opendata/alojamientos.xml");
 			}else if(archivo.getName()=="alojRural.xml") {
 				url = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/alojamientos_rurales_euskadi/opendata/alojamientos.xml");
 			}else if(archivo.getName()=="campings.xml") {
