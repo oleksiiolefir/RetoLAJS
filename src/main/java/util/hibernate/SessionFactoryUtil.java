@@ -1,4 +1,4 @@
-package launcher;
+package util.hibernate;
 
 import java.io.File;
 

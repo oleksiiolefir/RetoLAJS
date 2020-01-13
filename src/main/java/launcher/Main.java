@@ -16,6 +16,7 @@ import objetos.Alojamiento;
 import util.file.GestorFicheros;
 import util.file.GestorFicherosJSON;
 import util.file.GestorFicherosXML;
+import util.hibernate.SessionFactoryUtil;
 
 public class Main {
 	
