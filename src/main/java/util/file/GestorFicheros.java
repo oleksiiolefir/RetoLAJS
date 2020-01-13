@@ -18,8 +18,12 @@ public class GestorFicheros {
 	public GestorFicheros(File fichero) {
 		this.fichero = fichero;
 	}
+	
+	public GestorFicheros(String ruta) {
+		abrirFichero(ruta);
+	}
 
-	public boolean abrirFichero(String ruta) {
+	private boolean abrirFichero(String ruta) {
 		fichero = null;
 		if (fichero == null) {
 			fichero = new File(ruta);
@@ -51,11 +55,11 @@ public class GestorFicheros {
 		}
 	}
 
-	private void cargarBufferedReader(InputStream stream) {
+	protected void cargarBufferedReader(InputStream stream) {
 		bReader = new BufferedReader(new InputStreamReader(stream));
 	}
 
-	private boolean cargarBufferedWriter(boolean append) {
+	protected boolean cargarBufferedWriter(boolean append) {
 		try {
 			bWriter = new BufferedWriter(new FileWriter(fichero, append));
 			return true;
@@ -101,9 +105,9 @@ public class GestorFicheros {
 			}
 		}
 	}
-
+	/*
 	public boolean leerFichero() {
 		return true;
-	}
+	}*/
 
 }

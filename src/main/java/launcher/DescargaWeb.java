@@ -11,13 +11,11 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import objetos.Alojamiento;
 
@@ -103,9 +101,9 @@ public class DescargaWeb {
                 if(nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) nodo;
                     try {
-                    	aloj1.setIdAloj(element.getElementsByTagName("signatura").item(0).getTextContent());
+                    	aloj1.setIdAloj(Integer.parseInt(element.getElementsByTagName("signatura").item(0).getTextContent()));
                     }catch(Exception ex) {                    	
-                    	aloj1.setIdAloj(String.valueOf(i));
+                    	aloj1.setIdAloj(i);
                     }
                     try {                 	
                         aloj1.setTipo(element.getElementsByTagName("lodgingtype").item(0).getTextContent());
@@ -171,7 +169,7 @@ public class DescargaWeb {
                 }
                 aloj.add(aloj1);
             }
-            eliminarDuplicados(aloj);
+            //eliminarDuplicados(aloj);
             
         } catch(Exception e) {
             e.printStackTrace();
@@ -179,8 +177,8 @@ public class DescargaWeb {
 		return aloj;
 	}
 
-	private void eliminarDuplicados(ArrayList<Alojamiento> list) {
-		
+	/*
+	private void eliminarDuplicados(ArrayList<Alojamiento> list) {	
 		for(int i=0;i<list.size();i++) {
 			for(int j=i;j<list.size()-1;j++) {
 				if(list.get(i).getIdAloj().equals(list.get(j+1).getIdAloj())) {
@@ -190,6 +188,6 @@ public class DescargaWeb {
 				}
 			}
 		}	
-	}
+	}*/
 	
 }

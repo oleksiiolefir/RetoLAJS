@@ -16,7 +16,7 @@ public class Alojamiento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="idAloj", unique=true, nullable=false) private String idAloj;
+	@Column(name="idAloj", unique=true, nullable=false) private int idAloj;
 	@Column(name="tipo", length=50) private String tipo;
 	@Column(name="nombre", length=100) private String nombre;
 	@Column(name="descripcion", length=2000) private String descripcion;
@@ -36,7 +36,7 @@ public class Alojamiento implements Serializable {
 	public Alojamiento() {
 	}
 
-	public Alojamiento(String idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
+	public Alojamiento(int idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
 			String provincia, String telefono, String email, String web, int capacidad, float latitud, float longitud) {
 		this.idAloj = idAloj;
 		this.tipo = tipo;
@@ -53,11 +53,11 @@ public class Alojamiento implements Serializable {
 		this.longitud = longitud;
 	}
 
-	public String getIdAloj() {
+	public int getIdAloj() {
 		return this.idAloj;
 	}
 
-	public void setIdAloj(String idAloj) {
+	public void setIdAloj(int idAloj) {
 		this.idAloj = idAloj;
 	}
 

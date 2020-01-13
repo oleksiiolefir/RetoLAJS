@@ -22,7 +22,11 @@ public class GestorFicherosXML extends GestorFicheros {
 	public GestorFicherosXML(File fichero) {
 		super(fichero);
 	}
-
+	
+	public GestorFicherosXML(String ruta) {
+		super(ruta);
+	}
+	
 	public boolean parsearDocumento() {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = null;

@@ -8,8 +8,12 @@ public class GestorFicherosJSON extends GestorFicheros {
 		super(fichero);
 	}
 	
+	public GestorFicherosJSON(String ruta) {
+		super(ruta);
+	}
 	@Override
 	public boolean escribirFichero() {
+		
 		return false;
 		
 	}
