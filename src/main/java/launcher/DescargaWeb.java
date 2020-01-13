@@ -50,8 +50,7 @@ public class DescargaWeb {
 	}
 
 	private String getTagContent(Element element, String tag) {
-		return element.getElementsByTagName(tag).item(0).getTextContent();
-		
+		return element.getElementsByTagName(tag).item(0).getTextContent();		
 	}
 	
 	public void hacerDescarga(File archivo) {

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,7 +17,7 @@ public class Alojamiento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idAloj", unique=true, nullable=false) private int idAloj;
 	@Column(name="tipo", length=50) private String tipo;
 	@Column(name="nombre", length=100) private String nombre;
@@ -35,7 +37,49 @@ public class Alojamiento implements Serializable {
 
 	public Alojamiento() {
 	}
-
+	public Alojamiento(String tipo, String nombre, String descripcion, String direccion, String localidad,
+			String provincia, String telefono, String email, String web, int capacidad, float latitud, float longitud) {
+		this.tipo = tipo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.direccion = direccion;
+		this.localidad = localidad;
+		this.provincia = provincia;
+		this.telefono = telefono;
+		this.email = email;
+		this.web = web;
+		this.capacidad = capacidad;
+		this.latitud = latitud;
+		this.longitud = longitud;
+	}
+	public Alojamiento(String tipo, String nombre, String descripcion, String direccion, String localidad,
+			String provincia, String telefono, String email, String web, String capacidad, String latitud, String longitud) {
+		this.tipo = tipo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.direccion = direccion;
+		this.localidad = localidad;
+		this.provincia = provincia;
+		this.telefono = telefono;
+		this.email = email;
+		this.web = web;
+		try {			
+			this.capacidad = Integer.parseInt(capacidad);
+		} catch (NumberFormatException e) {
+			this.capacidad = 0;
+		}
+		try {			
+			this.latitud = Float.parseFloat(latitud);
+		} catch (NumberFormatException e) {
+			this.latitud = 0;
+		}
+		try {			
+			this.longitud = Float.parseFloat(longitud);
+		} catch (NumberFormatException e) {
+			this.longitud = 0;
+		}
+	}
+	
 	public Alojamiento(int idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
 			String provincia, String telefono, String email, String web, int capacidad, float latitud, float longitud) {
 		this.idAloj = idAloj;
