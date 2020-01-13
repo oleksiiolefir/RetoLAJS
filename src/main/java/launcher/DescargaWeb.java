@@ -70,7 +70,7 @@ public class DescargaWeb {
                     Element element = (Element) nodo;
                     aloj1.setIdAloj(i);
                     try {                 	
-                        aloj1.setTipo(element.getElementsByTagName("templatetype").item(0).getTextContent());
+                        aloj1.setTipo(element.getElementsByTagName("lodgingtype").item(0).getTextContent());
                     }catch(Exception ex){
                     	aloj1.setTipo(" ");
                     }
