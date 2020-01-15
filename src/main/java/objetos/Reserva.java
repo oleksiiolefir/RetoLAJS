@@ -58,12 +58,12 @@ public class Reserva implements Serializable {
 		this.alojamiento = alojamiento;
 	}
 
-	public Usuario getCliente() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setCliente(Usuario cliente) {
-		this.usuario = cliente;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Date getFechaEntrada() {

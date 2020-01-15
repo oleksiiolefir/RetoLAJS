@@ -36,9 +36,10 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(int idUsr, String username, String password, String nombre, String apellidos, String dni,
+	public Usuario(int idUsr, boolean admin, String username, String password, String nombre, String apellidos, String dni,
 			Date fechaNac) {
 		this.idUsr = idUsr;
+		this.admin = admin;
 		this.username = username;
 		this.password = password;
 		this.nombre = nombre;
@@ -53,6 +54,14 @@ public class Usuario implements Serializable {
 
 	public void setIdUsr(int idUsr) {
 		this.idUsr = idUsr;
+	}
+	
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	public String getUsername() {
