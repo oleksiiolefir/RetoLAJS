@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
 	@Column(name="idUsr", unique=true, nullable=false) 
 	private int idUsr;
 	
-	@Column(name="isadmin") private boolean admin;
+	@Column(name="admin") private boolean admin;
 	@Column(name="username", unique=true, length=50) private String username;
 	@Column(name="password", unique=false, length=50) private String password;
 	@Column(name="nombre", length=50) private String nombre;
@@ -30,15 +30,16 @@ public class Usuario implements Serializable {
 	@Column(name="dni", length=10) private String dni;
 	@Column(name="fechaNac") private Date fechaNac;
 	
-	@OneToMany(mappedBy="cliente") 
+	@OneToMany(mappedBy="usuario") 
 	private Set<Reserva> reservas;
 	 
 	public Usuario() {
 	}
 
-	public Usuario(int idUsr, String username, String password, String nombre, String apellidos, String dni,
+	public Usuario(int idUsr, boolean admin, String username, String password, String nombre, String apellidos, String dni,
 			Date fechaNac) {
 		this.idUsr = idUsr;
+		this.admin = admin;
 		this.username = username;
 		this.password = password;
 		this.nombre = nombre;

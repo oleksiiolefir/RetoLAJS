@@ -23,15 +23,15 @@ public class Main {
 	static ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
 	
 	public static void main(String[] args) {
-		cargarURLs();
+		ArrayList<String> urls = cargarURLs();
+		cargarAlojamientos(urls);
 		generarJson();
 		insertarDatosBD();		
 	}
 
-	public static void cargarURLs() {
+	public static ArrayList<String> cargarURLs() {
 		GestorFicheros ficheroUrls = new GestorFicheros("files/urlsAlojamientos.txt");
-		ArrayList<String> urls = ficheroUrls.leerFichero();
-		cargarAlojamientos(urls);
+		return ficheroUrls.leerFichero();
 	}
 	
 	public static void cargarAlojamientos(ArrayList<String> urls) {

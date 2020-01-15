@@ -30,7 +30,7 @@ public class GestorFicheros {
 		abrirFichero(ruta);
 	}
 
-	private boolean abrirFichero(String ruta) {
+	public boolean abrirFichero(String ruta) {
 		fichero = null;
 		if (fichero == null) {
 			fichero = new File(ruta);
@@ -126,11 +126,11 @@ public class GestorFicheros {
 			cargarBufferedWriter(append);
 		}
 		
-		String cadena;
+		char caracter;
 		try {
-			while ((cadena = bReader.readLine()) != null) {
+			while ((caracter = (char) bReader.read()) != -1) {
 				try {
-					bWriter.write(cadena);
+					bWriter.write(caracter);
 				} catch (IOException e) {
 					e.printStackTrace();
 					return false;

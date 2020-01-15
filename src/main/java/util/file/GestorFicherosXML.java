@@ -14,8 +14,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import objetos.Alojamiento;
-
 public class GestorFicherosXML extends GestorFicheros {
 
 	private Document document;
@@ -74,43 +72,4 @@ public class GestorFicherosXML extends GestorFicheros {
 		}
 	}
 
-	public ArrayList<Alojamiento> getAlojamientos(){
-	
-		// Parsear documento
-		ArrayList<Alojamiento> result = new ArrayList<Alojamiento>();
-		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder documentBuilder = factory.newDocumentBuilder();
-			Document document = documentBuilder.parse(fichero);
-			document.getDocumentElement().normalize();
-
-			NodeList nodelist = document.getElementsByTagName("row");
-
-			for(int i=0;i<nodelist.getLength();i++) {
-				if(nodelist.item(i).getNodeType() == Node.ELEMENT_NODE) {
-					Element element = (Element) nodelist.item(i);
-					Alojamiento alojamiento = new Alojamiento(
-						getElementContent(element,"lodgingtype",0),
-						getElementContent(element,"documentname",0),
-						getElementContent(element,"turismdescription",1),
-						getElementContent(element,"address",0),
-						getElementContent(element, "municipality", 0),
-						getElementContent(element,"territory",0),
-						getElementContent(element,"phone",0),
-						getElementContent(element,"tourismemail",0),
-						getElementContent(element, "web", 0),
-						getElementContent(element,"capacity",0),
-						getElementContent(element,"latwgs84",0),
-						getElementContent(element,"lonwgs84",0)
-						);
-					result.add(alojamiento);
-				}
-			}	
-	
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
 }
