@@ -15,9 +15,12 @@ import java.util.ArrayList;
 public class GestorFicheros {
 
 	protected File fichero;
+	protected ArrayList<File> ficheros;
 	protected BufferedReader bReader;
 	protected BufferedWriter bWriter;
 
+	public GestorFicheros() {}
+	
 	public GestorFicheros(File fichero) {
 		this.fichero = fichero;
 		if (!fichero.exists()) {
@@ -30,11 +33,22 @@ public class GestorFicheros {
 		abrirFichero(ruta);
 	}
 
+	public void setFichero(String path) {
+		if(path==null) 
+			System.out.println("path==null");
+		else {
+			fichero = new File(path);
+			if(!fichero.exists()) {
+				crearFichero();
+			}
+		}
+	}
+	
 	public boolean abrirFichero(String ruta) {
 		fichero = null;
 		if (fichero == null) {
 			fichero = new File(ruta);
-			if (!fichero.exists()) {
+			if (fichero.isFile() && !fichero.exists()) {
 				System.out.println("El fichero no existe, se creará uno nuevo");
 				if (crearFichero())
 					return true;
@@ -44,20 +58,32 @@ public class GestorFicheros {
 		}
 		return false;
 	}
-
+	
+	
 	/*
 	 * public boolean cerrarFichero() { if (fichero != null) { fichero = null;
 	 * return true; } return false; }
 	 */
 
 	private boolean crearFichero() {
-		try {
-			fichero.createNewFile();
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
+		System.out.println("El fichero no existe. Se creará uno nuevo");
+		File parent = fichero.getParentFile();
+		if(parent==null) {
+			if(fichero.mkdirs()) {
+				System.out.println("Directorios dependientes del fichero creados con exito");
+				try {
+					fichero.createNewFile();
+					System.out.println("Fichero creado");
+					return true;
+				} catch (IOException e) {
+					System.out.println("No se pudo crear el fichero");
+					return false;
+				}
+			}else {
+				System.out.println("No se pudieron crear los directorios");
+				return false;
+			}
+		}return false;
 	}
 
 	protected void cargarBufferedReader(InputStream stream) {
@@ -126,9 +152,9 @@ public class GestorFicheros {
 			cargarBufferedWriter(append);
 		}
 		
-		char caracter;
+		String caracter;
 		try {
-			while ((caracter = (char) bReader.read()) != -1) {
+			while ((caracter = bReader.readLine()) != null) {
 				try {
 					bWriter.write(caracter);
 				} catch (IOException e) {
@@ -146,8 +172,9 @@ public class GestorFicheros {
 		}
 	}
 
-	public boolean escribirFichero(String cadena) {
-		cargarBufferedWriter(false);
+	public boolean escribirFichero(String cadena, String path, boolean append) {
+		
+		cargarBufferedWriter(append);
 		try {
 			bWriter.write(cadena);
 			return true;

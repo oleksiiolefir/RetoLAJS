@@ -19,7 +19,7 @@ public class GestorFicherosJSON extends GestorFicheros {
 		super(ruta);
 	}
 	
-	public boolean escribirFichero(ArrayList<Alojamiento> list) {
+	public boolean escribirFichero(ArrayList<?> list) {
 		gson = new Gson();
 		String json = gson.toJson(list);
 		if(escribirFichero(json))
