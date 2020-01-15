@@ -38,7 +38,7 @@ public class GestorFicherosXML extends GestorFicheros {
 		}
 
 		try {
-			document = documentBuilder.parse(fichero);
+			document = documentBuilder.parse(file);
 		} catch (SAXException | IOException e) {
 			e.printStackTrace();
 			return false;

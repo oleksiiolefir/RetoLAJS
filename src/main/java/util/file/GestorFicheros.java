@@ -9,198 +9,192 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 
+import util.logger.LogLevel;
+import util.logger.Logger;
+
 public class GestorFicheros {
 
-	protected File fichero;
+	protected File file;
 	protected ArrayList<File> ficheros;
-	protected BufferedReader bReader;
-	protected BufferedWriter bWriter;
+	protected BufferedReader reader;
+	protected BufferedWriter writer;
 
-	public GestorFicheros() {}
-	
-	public GestorFicheros(File fichero) {
-		this.fichero = fichero;
-		if (!fichero.exists()) {
-			System.out.println("El fichero no existe, se creará uno nuevo");
-			crearFichero();
-		}
+	public GestorFicheros() {
 	}
 
-	public GestorFicheros(String ruta) {
-		abrirFichero(ruta);
-	}
-
-	public void setFichero(String path) {
-		if(path==null) 
-			System.out.println("path==null");
-		else {
-			fichero = new File(path);
-			if(!fichero.exists()) {
-				crearFichero();
-			}
-		}
-	}
-	
-	public boolean abrirFichero(String ruta) {
-		fichero = null;
-		if (fichero == null) {
-			fichero = new File(ruta);
-			if (fichero.isFile() && !fichero.exists()) {
-				System.out.println("El fichero no existe, se creará uno nuevo");
-				if (crearFichero())
+	public boolean openFile(String path) throws SecurityException {
+		if (path == null) {
+			Logger.getInstance().log("Error al crear fichero, path es null", LogLevel.ERROR, getClass());
+			return false;
+		} else {
+			file = new File(path);
+			if (!file.exists() && file.isFile()) {
+				Logger.getInstance().log("El fichero no existe, se creará uno nuevo", LogLevel.INFO, getClass());
+				if (create())
 					return true;
 				else
 					return false;
 			}
+			return true;
+		}
+	}
+
+	private boolean create() throws SecurityException {
+		boolean dirsCreated = true;
+		if (file.getParentFile() == null) {
+			Logger.getInstance().log("El(los) directorio(s) padre no existen, se crearán", LogLevel.INFO, getClass());
+			dirsCreated = createDirs();
+		}
+		if (dirsCreated) {
+			if (createFile())
+				return true;
+			else
+				return false;
+		} else
+			return false;
+	}
+
+	private boolean createFile() {
+		try {
+			file.createNewFile();
+			Logger.getInstance().log("Fichero creado con éxito", LogLevel.INFO, getClass());
+			return true;
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al crear el fichero " + file.getAbsolutePath(), LogLevel.ERROR, getClass(),
+					e.getClass());
+			return false;
+		}
+	}
+
+	private boolean createDirs() throws SecurityException {
+		if (file.mkdirs()) {
+			Logger.getInstance().log("Directorio(s) padre del fichero creado(s) con éxito", LogLevel.INFO, getClass());
+			return true;
+		} else {
+			Logger.getInstance().log("Error al crear el(los) directorio(s)", LogLevel.ERROR, getClass());
+			return false;
+		}
+	}
+
+	protected void loadReader(InputStream stream) {
+		reader = new BufferedReader(new InputStreamReader(stream));
+	}
+
+	protected boolean loadReader() {
+		try {
+			reader = new BufferedReader(new FileReader(file));
+			return true;
+		} catch (FileNotFoundException e) {
+			Logger.getInstance().log("Error al cargar reader. No se encuentra el fichero", LogLevel.ERROR, getClass(),
+					e.getClass());
+			return false;
+		}
+	}
+
+	protected boolean loadWriter(boolean append) {
+		try {
+			writer = new BufferedWriter(new FileWriter(file, append));
+			return true;
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al cargar reader. No se encuentra el fichero", LogLevel.ERROR, getClass(),
+					e.getClass());
+			return false;
+		}
+	}
+
+	protected boolean closeReader() {
+		try {
+			reader.close();
+			return true;
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al cerrar reader", LogLevel.ERROR, getClass(), e.getClass());
+			return false;
+		}
+	}
+
+	protected boolean closeWriter() {
+		try {
+			writer.close();
+			return true;
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al cerrar writer", LogLevel.ERROR, getClass(), e.getClass());
+			return false;
+		}
+	}
+
+	public boolean downloadFile(URL url, String pathTo) {
+		try {
+			loadReader(url.openStream());
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al abrir URL", LogLevel.WARNING, getClass(), e.getClass());
+			return false;
+		}
+		if (loadWriter(false)) {
+			if (writeFile(pathTo, false))
+				return true;
+			else {
+				return false;
+			}
 		}
 		return false;
 	}
-	
-	
-	/*
-	 * public boolean cerrarFichero() { if (fichero != null) { fichero = null;
-	 * return true; } return false; }
-	 */
 
-	private boolean crearFichero() {
-		System.out.println("El fichero no existe. Se creará uno nuevo");
-		File parent = fichero.getParentFile();
-		if(parent==null) {
-			if(fichero.mkdirs()) {
-				System.out.println("Directorios dependientes del fichero creados con exito");
+	protected boolean writeFile(String pathTo, boolean append) {
+		try {
+			String line;
+			while ((line = reader.readLine()) != null) {
 				try {
-					fichero.createNewFile();
-					System.out.println("Fichero creado");
-					return true;
+					writer.write(line);
 				} catch (IOException e) {
-					System.out.println("No se pudo crear el fichero");
+					Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(), e.getClass());
 					return false;
 				}
-			}else {
-				System.out.println("No se pudieron crear los directorios");
-				return false;
 			}
-		}return false;
-	}
-
-	protected void cargarBufferedReader(InputStream stream) {
-		bReader = new BufferedReader(new InputStreamReader(stream));
-	}
-
-	protected boolean cargarBufferedReader() {
-		try {
-			bReader = new BufferedReader(new FileReader(fichero));
-			return true;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	protected boolean cargarBufferedWriter(boolean append) {
-		try {
-			bWriter = new BufferedWriter(new FileWriter(fichero, append));
 			return true;
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.getInstance().log("Error de lectura en buffer", LogLevel.ERROR, getClass(), e.getClass());
 			return false;
+		} finally {
+			closeReader();
+			closeWriter();
 		}
 	}
 
-	protected boolean cerrarBufferedReader() {
-		try {
-			bReader.close();
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	protected boolean cerrarBufferedWriter() {
-		try {
-			bWriter.close();
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	public boolean descargarFichero(URL url) {
-		try {
-			cargarBufferedReader(url.openStream());
-			cargarBufferedWriter(false);
-			if (escribirFichero(false, false))
+	public boolean writeFile(String pathTo, boolean append, String cadena) {
+		if (loadWriter(append)) {
+			try {
+				writer.write(cadena);
 				return true;
-			else {
-				System.out.println("Error al escribir fichero descargado");
+			} catch (IOException e) {
+				Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(), e.getClass());
 				return false;
+			} finally {
+				closeWriter();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
 		}
+		return false;
 	}
 
-	public boolean escribirFichero(boolean append, boolean bufferOpen) {
-		if (bufferOpen) {
-			cargarBufferedReader();
-			cargarBufferedWriter(append);
-		}
-		
-		String caracter;
-		try {
-			while ((caracter = bReader.readLine()) != null) {
-				try {
-					bWriter.write(caracter);
-				} catch (IOException e) {
-					e.printStackTrace();
-					return false;
+	public ArrayList<String> readFile(String pathFrom) {
+		if (loadReader()) {
+			ArrayList<String> lineas = new ArrayList<String>();
+			try {
+				String linea;
+				while ((linea = reader.readLine()) != null) {
+					lineas.add(linea);
 				}
+				return lineas;
+			} catch (IOException e) {
+				Logger.getInstance().log("Error de lectura en buffer", LogLevel.ERROR, getClass(), e.getClass());
+				return null;
+			} finally {
+				closeReader();
 			}
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			cerrarBufferedReader();
-			cerrarBufferedWriter();
-		}
-	}
-
-	public boolean escribirFichero(String cadena, String path, boolean append) {
-		
-		cargarBufferedWriter(append);
-		try {
-			bWriter.write(cadena);
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			cerrarBufferedWriter();
-		}
-	}
-
-	public ArrayList<String> leerFichero() {
-		ArrayList<String> lineas = new ArrayList<String>();
-		cargarBufferedReader();
-		try {
-			String linea;
-			while ((linea = bReader.readLine()) != null) {
-				lineas.add(linea);
-			}
-			return lineas;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		} finally {
-			cerrarBufferedReader();
-		}
+		} return null;
 	}
 
 }

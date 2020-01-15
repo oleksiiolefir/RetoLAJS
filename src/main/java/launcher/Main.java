@@ -34,12 +34,12 @@ public class Main {
 
 	public static ArrayList<String> cargarURLs() {
 		GestorFicheros ficheroUrls = new GestorFicheros("files/urlsAlojamientos.txt");
-		return ficheroUrls.leerFichero();
+		return ficheroUrls.readFile();
 	}
 	
 	public static ArrayList<String> cargarCheckSums() {
 		GestorFicheros ficheroChecksums = new GestorFicheros("files/checksum.txt");
-		return ficheroChecksums.leerFichero();
+		return ficheroChecksums.readFile();
 	}
 	
 	public static void cargarAlojamientos(ArrayList<String> urls, ArrayList<String> checksums) {
@@ -58,7 +58,7 @@ public class Main {
 				try {
 					String newChecksum = null;
 					if((newChecksum = compararCheckSum(url,checksum)) != null) {
-						fichero.descargarFichero(new URL(url));
+						fichero.downloadFile(new URL(url));
 						System.out.println("Fichero descargado");
 						
 					}
