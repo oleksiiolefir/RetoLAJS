@@ -1,6 +1,5 @@
 package util.logger;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -9,8 +8,7 @@ import util.file.GestorFicheros;
 public class Logger {
 
 	private static Logger logger;
-	private static GestorFicheros gestorFicheros;
-	private static File logFile;
+	private static String path;
 	private static final String FECHA = "yyyy-MM-dd";
 	private static final String HORA = "HH:mm:ss";
 	private static final String FECHA_HORA = "yyyy-MM-dd HH:mm:ss";
@@ -18,37 +16,24 @@ public class Logger {
 	private Logger() {}
 	
 	public static Logger getInstance() {
-		if(logger==null) {
+		path = "files/log/log_" + getCurrentDate(FECHA) + ".log";
+		if(logger==null) 
 			logger = new Logger();
-			logFile = new File("files/log/log_"+ getCurrentDate(FECHA));
-		}
 		return logger;
 	}
 	
-	public void log(String mensaje, LogLevel logLevel, Class clase) {
-		//gestorFicheros.abrirFichero("files/log/log_"+ getCurrentDate(FECHA) +".log");
+	public boolean log(String mensaje, LogLevel logLevel, Class<?> clase, Class<?> exception) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(getCurrentDate(FECHA_HORA));
-		sb.append(" - ");
-		sb.append(clase.getTypeName());
-		sb.append("[");
-		sb.append(logLevel);
-		sb.append("] - ");
-		sb.append(mensaje);
-		//lector.escribirFichero(sb.toString());
-	}
-	
-	public void log(String mensaje, LogLevel logLevel, Class<?> clase, Class<?> exception) {
-		//gestorFicheros.abrirFichero("files/log/log_"+ getCurrentDate(FECHA) +".log");
-		StringBuilder sb = new StringBuilder();
-		sb.append(getCurrentDate(FECHA_HORA));
-		sb.append(" - ");
-		sb.append(clase.getTypeName());
-		sb.append("[");
-		sb.append(logLevel);
-		sb.append("] - ");
-		sb.append(mensaje);
-		//lector.escribirFichero(sb.toString());
+		sb.append("[" + getCurrentDate(FECHA_HORA) + "]");
+		if(logLevel!=null) sb.append(logLevel);
+		if(clase!=null) sb.append("[Class: " + clase.getTypeName() + "]");
+		if(exception!=null) sb.append("[Exception: " + exception.getSimpleName()+ "]");
+		if(mensaje!=null) sb.append(" " + mensaje);
+		
+		if (new GestorFicheros().writeFile(path, true, sb.toString()))
+			return true;
+		else
+			return false;
 	}
 	
 	private static String getCurrentDate(String format) {

@@ -25,21 +25,10 @@ public class Main {
 	static ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
 	
 	public static void main(String[] args) {
-		ArrayList<String> urls = cargarURLs();
-		ArrayList<String> checksums = cargarCheckSums();
+		new DataGetter().start();
 		cargarAlojamientos(urls, checksums);
 		generarJson();
 		insertarDatosBD();		
-	}
-
-	public static ArrayList<String> cargarURLs() {
-		GestorFicheros ficheroUrls = new GestorFicheros("files/urlsAlojamientos.txt");
-		return ficheroUrls.readFile();
-	}
-	
-	public static ArrayList<String> cargarCheckSums() {
-		GestorFicheros ficheroChecksums = new GestorFicheros("files/checksum.txt");
-		return ficheroChecksums.readFile();
 	}
 	
 	public static void cargarAlojamientos(ArrayList<String> urls, ArrayList<String> checksums) {
@@ -129,5 +118,6 @@ public class Main {
 			session.save(alojamiento);
 		tx.commit();
 		session.close();
+		sessionFactory.close();
 	}
 }
