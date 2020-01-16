@@ -22,13 +22,10 @@ import util.hibernate.SessionFactoryUtil;
 
 public class Main {
 	
-	static ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
-	
-	public static void main(String[] args) {
-		new DataGetter().start();
-		cargarAlojamientos(urls, checksums);
-		generarJson();
-		insertarDatosBD();		
+	public static void main(String[] args) {		
+		ArrayList<?> list = new DataGetter().getData();
+		new JSONGenerator().generateJsonFiles(list);
+		new DataSetter();		
 	}
 	
 	public static void cargarAlojamientos(ArrayList<String> urls, ArrayList<String> checksums) {
@@ -101,13 +98,7 @@ public class Main {
 	}
 
 	public static void generarJson() {
-		GestorFicherosJSON[] ficheros = new GestorFicherosJSON[3];
-		ficheros[0] = new GestorFicherosJSON(new File("files/json/albergues.json"));
-		ficheros[1] = new GestorFicherosJSON(new File("files/json/alojRurales.json"));
-		ficheros[2] = new GestorFicherosJSON(new File("files/json/campings.json"));
-		for(GestorFicherosJSON fichero:ficheros) {
-			fichero.escribirFichero(alojamientos);
-		}
+		
 	}
 
 	public static void insertarDatosBD() {

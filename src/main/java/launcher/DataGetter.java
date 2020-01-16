@@ -1,5 +1,6 @@
 package launcher;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,10 +13,12 @@ import util.logger.Logger;
 
 public class DataGetter {
 	
-	private static final String PATH_URLS = "files/urlsAlojamientos.txt";
+	private static final String PATH_URLS = "files/urls.txt";
+	private static final String PATH_CHECKSUMS = "files/checksums.txt";
 
 	private GestorFicheros fileManager;
 	private ArrayList<String> urls;
+	private ArrayList<String> checksums;
 	
 	public DataGetter() {
 		fileManager = new GestorFicheros();
@@ -26,8 +29,17 @@ public class DataGetter {
 		readUrls();
 	}
 	
+	public ArrayList<?> getData(){
+		return null;
+	}
+	
 	private void loadUrls() {
-		urls = fileManager.readFile(PATH_URLS);
+		try {
+			urls = fileManager.readFile(PATH_URLS);
+			checksums = fileManager.readFile(PATH_CHECKSUMS);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void readUrls() {
@@ -47,12 +59,13 @@ public class DataGetter {
 			return false;
 		}
 		if(checksums[0].equalsIgnoreCase(checksums[1])) {
+			Logger.getInstance().log("Checksums iguales. No se descargará el archivo", LogLevel.INFO, getClass(), null);
 			return true;
 		} else {
+			Logger.getInstance().log("Checksums diferentes. Se descargará el archivo", LogLevel.INFO, getClass(), null);
 			refreshChecksum(checksums[0]);
 			return false;
 		}
-
 	}
 	
 	private void refreshChecksum(String newChecksum) {

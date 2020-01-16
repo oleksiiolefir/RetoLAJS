@@ -19,33 +19,31 @@ public class GestorFicheros {
 
 	protected File file;
 	protected ArrayList<File> ficheros;
-	protected BufferedReader reader;
-	protected BufferedWriter writer;
+	protected BufferedReader bfReader;
+	protected BufferedWriter bfWriter;
+	protected FileReader flReader;
+	protected FileWriter flWriter;
 
 	public GestorFicheros() {
 	}
 
-	public boolean openFile(String path) throws SecurityException {
-		if (path == null) {
-			Logger.getInstance().log("Error al crear fichero, path es null", LogLevel.ERROR, getClass(),null);
-			return false;
-		} else {
-			file = new File(path);
-			if (!file.exists() && file.isFile()) {
-				Logger.getInstance().log("El fichero no existe, se creará uno nuevo", LogLevel.INFO, getClass(),null);
-				if (create())
-					return true;
-				else
-					return false;
-			}
-			return true;
+	public boolean openFile(String path) throws IOException {
+		file = new File(path);
+		if (!file.exists() && file.isFile()) {
+			Logger.getInstance().log("El fichero no existe, se creará uno nuevo", LogLevel.INFO, getClass(), null);
+			if (createPath())
+				return true;
+			else
+				return false;
 		}
+		return true;
 	}
 
-	private boolean create() throws SecurityException {
+	private boolean createPath() throws IOException {
 		boolean dirsCreated = true;
 		if (file.getParentFile() == null) {
-			Logger.getInstance().log("El(los) directorio(s) padre no existen, se crearán", LogLevel.INFO, getClass(),null);
+			Logger.getInstance().log("El(los) directorio(s) padre no existen, se crearán", LogLevel.INFO, getClass(),
+					null);
 			dirsCreated = createDirs();
 		}
 		if (dirsCreated) {
@@ -60,7 +58,7 @@ public class GestorFicheros {
 	private boolean createFile() {
 		try {
 			file.createNewFile();
-			Logger.getInstance().log("Fichero creado con éxito", LogLevel.INFO, getClass(),null);
+			Logger.getInstance().log("Fichero creado con éxito", LogLevel.INFO, getClass(), null);
 			return true;
 		} catch (IOException e) {
 			Logger.getInstance().log("Error al crear el fichero " + file.getAbsolutePath(), LogLevel.ERROR, getClass(),
@@ -69,9 +67,10 @@ public class GestorFicheros {
 		}
 	}
 
-	private boolean createDirs() throws SecurityException {
+	private boolean createDirs() throws IOException {
 		if (file.mkdirs()) {
-			Logger.getInstance().log("Directorio(s) padre del fichero creado(s) con éxito", LogLevel.INFO, getClass(), null);
+			Logger.getInstance().log("Directorio(s) padre del fichero creado(s) con éxito", LogLevel.INFO, getClass(),
+					null);
 			return true;
 		} else {
 			Logger.getInstance().log("Error al crear el(los) directorio(s)", LogLevel.ERROR, getClass(), null);
@@ -80,12 +79,12 @@ public class GestorFicheros {
 	}
 
 	protected void loadReader(InputStream stream) {
-		reader = new BufferedReader(new InputStreamReader(stream));
+		bfReader = new BufferedReader(new InputStreamReader(stream));
 	}
 
 	protected boolean loadReader() {
 		try {
-			reader = new BufferedReader(new FileReader(file));
+			bfReader = new BufferedReader(new FileReader(file));
 			return true;
 		} catch (FileNotFoundException e) {
 			Logger.getInstance().log("Error al cargar reader. No se encuentra el fichero", LogLevel.ERROR, getClass(),
@@ -96,7 +95,7 @@ public class GestorFicheros {
 
 	protected boolean loadWriter(boolean append) {
 		try {
-			writer = new BufferedWriter(new FileWriter(file, append));
+			bfWriter = new BufferedWriter(new FileWriter(file, append));
 			return true;
 		} catch (IOException e) {
 			Logger.getInstance().log("Error al cargar reader. No se encuentra el fichero", LogLevel.ERROR, getClass(),
@@ -107,7 +106,7 @@ public class GestorFicheros {
 
 	protected boolean closeReader() {
 		try {
-			reader.close();
+			bfReader.close();
 			return true;
 		} catch (IOException e) {
 			Logger.getInstance().log("Error al cerrar reader", LogLevel.ERROR, getClass(), e.getClass());
@@ -117,7 +116,7 @@ public class GestorFicheros {
 
 	protected boolean closeWriter() {
 		try {
-			writer.close();
+			bfWriter.close();
 			return true;
 		} catch (IOException e) {
 			Logger.getInstance().log("Error al cerrar writer", LogLevel.ERROR, getClass(), e.getClass());
@@ -125,7 +124,7 @@ public class GestorFicheros {
 		}
 	}
 
-	public boolean downloadFile(URL url, String pathTo) {
+	public boolean downloadFile(URL url, String pathTo) throws IOException {
 		try {
 			loadReader(url.openStream());
 		} catch (IOException e) {
@@ -142,15 +141,16 @@ public class GestorFicheros {
 		return false;
 	}
 
-	protected boolean writeFile(String pathTo, boolean append) {
-		if(openFile(pathTo)) {
+	protected boolean writeFile(String pathTo, boolean append) throws IOException {
+		if (openFile(pathTo)) {
 			try {
 				String line;
-				while ((line = reader.readLine()) != null) {
+				while ((line = bfReader.readLine()) != null) {
 					try {
-						writer.write(line);
+						bfWriter.write(line);
 					} catch (IOException e) {
-						Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(), e.getClass());
+						Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(),
+								e.getClass());
 						return false;
 					}
 				}
@@ -166,11 +166,11 @@ public class GestorFicheros {
 		return false;
 	}
 
-	public boolean writeFile(String pathTo, boolean append, String cadena) {
-		if(openFile(pathTo)) {
+	public boolean writeFile(String pathTo, boolean append, String text) throws IOException {
+		if (openFile(pathTo)) {
 			if (loadWriter(append)) {
 				try {
-					writer.write(cadena);
+					bfWriter.write(text);
 					return true;
 				} catch (IOException e) {
 					Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(), e.getClass());
@@ -179,19 +179,18 @@ public class GestorFicheros {
 					closeWriter();
 				}
 			}
-		}	
+		}
 		return false;
 	}
 
-	public ArrayList<String> readFile(String pathFrom) {
-		if(openFile(pathFrom)) {
+	public ArrayList<String> readFile(String filePath) throws IOException {
+		if (openFile(filePath)) {
 			if (loadReader()) {
 				ArrayList<String> lineas = new ArrayList<String>();
 				try {
 					String linea;
-					while ((linea = reader.readLine()) != null) {
+					while ((linea = bfReader.readLine()) != null)
 						lineas.add(linea);
-					}
 					return lineas;
 				} catch (IOException e) {
 					Logger.getInstance().log("Error de lectura en buffer", LogLevel.ERROR, getClass(), e.getClass());
@@ -199,9 +198,22 @@ public class GestorFicheros {
 				} finally {
 					closeReader();
 				}
-			} 
+			}
 		}
 		return null;
 	}
 
+	public boolean replaceLine(String filepath, int index, String newText) throws IOException {
+		openFile(filepath);
+		loadReader();
+		FileWriter fw = new FileWriter(file);
+		fw.
+		return false;
+	}
+
+	public void deleteFile() throws IOException {
+		if (file.exists()) {
+			file.delete();
+		}
+	}
 }
