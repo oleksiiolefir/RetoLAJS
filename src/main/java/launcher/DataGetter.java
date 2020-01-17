@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import util.file.Checksum;
 import util.file.GestorFicheros;
@@ -43,32 +42,35 @@ public class DataGetter {
 	}
 	
 	private void readUrls() {
-		Iterator<String> urlIterator = urls.iterator();
-		if(urlIterator.hasNext()) {
-			String[] url = urlIterator.next().split(" ");
-			compareChecksums(url);
+		if(checksums!=null) {
+			for(int i=0;i<urls.size();i++) {
+				if(checksums.get(i)!=null) {
+					String checksum = compareChecksums(urls.get(i), checksums.get(i));
+					if(!checksum.equals(checksums.get(i)))
+						refreshChecksum(checksum,i);
+				}
+			}
 		}
 	}
 	
-	private boolean compareChecksums(String[] checksums) {
+	private String compareChecksums(String url, String checksum) {
 		Checksum checker = new Checksum();
 		try {
-			checksums[0] = checker.getMD5Checksum(new URL(checksums[0]));
+			url = checker.getMD5Checksum(new URL(url));
 		} catch (MalformedURLException e) {
-			Logger.getInstance().log("URL mal formada", LogLevel.ERROR, getClass(), e.getClass());
-			return false;
+			Logger.getInstance().log("URL mal formada. No se descargará el archivo", LogLevel.ERROR, getClass(), e.getClass());
+			return checksum;
 		}
-		if(checksums[0].equalsIgnoreCase(checksums[1])) {
+		if(url.equalsIgnoreCase(checksum)) {
 			Logger.getInstance().log("Checksums iguales. No se descargará el archivo", LogLevel.INFO, getClass(), null);
-			return true;
+			return checksum;
 		} else {
 			Logger.getInstance().log("Checksums diferentes. Se descargará el archivo", LogLevel.INFO, getClass(), null);
-			refreshChecksum(checksums[0]);
-			return false;
+			return url;
 		}
 	}
 	
-	private void refreshChecksum(String newChecksum) {
+	private void refreshChecksum(String newChecksum, int index) {
 		
 	}
 	

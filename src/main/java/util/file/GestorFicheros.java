@@ -183,6 +183,26 @@ public class GestorFicheros {
 		return false;
 	}
 
+	public boolean writeFile(String pathTo, boolean append, ArrayList<String> lines) throws IOException {
+		if (openFile(pathTo)) {
+			if (loadWriter(append)) {
+				try {
+					for(String line:lines) {
+						bfWriter.write(line);
+						bfWriter.newLine();
+					}
+					return true;
+				} catch (IOException e) {
+					Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(), e.getClass());
+					return false;
+				} finally {
+					closeWriter();
+				}
+			}
+		}
+		return false;
+	}
+	
 	public ArrayList<String> readFile(String filePath) throws IOException {
 		if (openFile(filePath)) {
 			if (loadReader()) {
@@ -201,14 +221,6 @@ public class GestorFicheros {
 			}
 		}
 		return null;
-	}
-
-	public boolean replaceLine(String filepath, int index, String newText) throws IOException {
-		openFile(filepath);
-		loadReader();
-		FileWriter fw = new FileWriter(file);
-		fw.
-		return false;
 	}
 
 	public void deleteFile() throws IOException {
