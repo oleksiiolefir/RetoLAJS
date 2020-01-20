@@ -29,6 +29,10 @@ public class Logger {
 		return logger;
 	}
 
+	public void setLogLevel(LogLevel logLevel) {
+		
+	}
+	
 	public void log(String mensaje, LogLevel logLevel, Class<?> clase, Class<?> exception) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[" + getCurrentDate(FECHA_HORA) + "]");

@@ -1,178 +1,204 @@
-[2020-01-20 13:10:55]DEBUG Inicio sesion
-[2020-01-20 13:10:55]INFO[Class: util.file.GestorFicherosXML] El fichero no existe, se creará uno nuevo
-[2020-01-20 13:10:55]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
-[2020-01-20 13:10:55]INFO[Class: util.file.GestorFicherosXML] El fichero no existe, se creará uno nuevo
-[2020-01-20 13:10:55]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
-[2020-01-20 13:10:55]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
-[2020-01-20 13:10:55]INFO[Class: util.file.GestorFicherosXML] El fichero no existe, se creará uno nuevo
-[2020-01-20 13:10:55]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
-[2020-01-20 13:10:56]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
-[2020-01-20 13:10:56]INFO[Class: util.file.GestorFicherosXML] El fichero no existe, se creará uno nuevo
-[2020-01-20 13:10:56]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
-[2020-01-20 13:10:56]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
-[2020-01-20 13:10:56]INFO[Class: util.file.GestorFicherosJSON] El fichero no existe, se creará uno nuevo
-[2020-01-20 13:10:56]INFO[Class: util.file.GestorFicherosJSON] Fichero creado con éxito
-[2020-01-20 13:11:45]DEBUG Inicio sesion
-[2020-01-20 13:12:10]DEBUG Inicio sesion
-[2020-01-20 13:12:10]INFO[Class: util.file.GestorFicherosXML] El fichero no existe, se creará uno nuevo
-[2020-01-20 13:12:10]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
-[2020-01-20 13:12:53]DEBUG Inicio sesion
-[2020-01-20 13:12:53]INFO[Class: util.file.GestorFicherosXML] El fichero no existe, se creará uno nuevo
-[2020-01-20 13:12:53]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
-[2020-01-20 13:19:47]DEBUG Inicio sesion
-[2020-01-20 13:19:48]INFO[Class: launcher.DataGetter] Checksums diferentes. Se descargará el archivo
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag address no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]WARNING[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
-[2020-01-20 13:19:48]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
-[2020-01-20 13:25:52]DEBUG Inicio sesion
-[2020-01-20 13:25:52]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
-[2020-01-20 13:25:52]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
-[2020-01-20 13:25:52]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
+[2020-01-20 13:56:04]DEBUG Inicio sesion
+[2020-01-20 13:56:04]INFO[Class: util.file.GestorFicherosXML] El fichero files\checksums.txt no existe, se creará uno nuevo
+[2020-01-20 13:56:04]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 13:56:04]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\campings_de_euskadi.xml no existe, se creará uno nuevo
+[2020-01-20 13:56:04]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 13:56:05]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
+[2020-01-20 13:56:05]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\albergues_de_euskadi.xml no existe, se creará uno nuevo
+[2020-01-20 13:56:05]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 13:56:05]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
+[2020-01-20 13:56:05]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\alojamientos_rurales_euskadi.xml no existe, se creará uno nuevo
+[2020-01-20 13:56:05]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 13:56:05]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
+[2020-01-20 13:56:05]INFO[Class: util.file.GestorFicherosJSON] El fichero files\json\alojamientos.json no existe, se creará uno nuevo
+[2020-01-20 13:56:05]INFO[Class: util.file.GestorFicherosJSON] Fichero creado con éxito
+[2020-01-20 13:56:10]DEBUG Inicio sesion
+[2020-01-20 13:56:10]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
+[2020-01-20 13:56:10]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
+[2020-01-20 13:56:11]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
+[2020-01-20 14:02:56]DEBUG Inicio sesion
+[2020-01-20 14:02:56]INFO[Class: util.file.GestorFicherosXML] El fichero files\checksums.txt no existe, se creará uno nuevo
+[2020-01-20 14:02:56]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 14:02:56]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\campings_de_euskadi.xml no existe, se creará uno nuevo
+[2020-01-20 14:02:56]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 14:02:57]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
+[2020-01-20 14:02:57]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\albergues_de_euskadi.xml no existe, se creará uno nuevo
+[2020-01-20 14:02:57]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 14:02:57]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
+[2020-01-20 14:02:57]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\alojamientos_rurales_euskadi.xml no existe, se creará uno nuevo
+[2020-01-20 14:02:57]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 14:02:57]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero
+[2020-01-20 14:05:24]DEBUG Inicio sesion
+[2020-01-20 14:05:25]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
+[2020-01-20 14:05:25]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
+[2020-01-20 14:05:25]INFO[Class: launcher.DataGetter] Checksums iguales. No se descargará el archivo
+[2020-01-20 14:06:11]DEBUG Inicio sesion
+[2020-01-20 14:06:11]INFO[Class: util.file.GestorFicherosXML] El fichero files\checksums.txt no existe, se creará uno nuevo
+[2020-01-20 14:06:11]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag address no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag address no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag phone no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag latwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag lonwgs84 no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag tourismemail no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]DEBUG[Class: util.file.GestorFicherosXML][Exception: NullPointerException] Tag web no encontrado
+[2020-01-20 14:06:12]ERROR[Class: util.file.GestorFicherosXML][Exception: SAXParseException] Error al parsear el fichero

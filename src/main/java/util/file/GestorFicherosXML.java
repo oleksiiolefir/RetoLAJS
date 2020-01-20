@@ -72,7 +72,7 @@ public class GestorFicherosXML extends GestorFicheros {
 		try {
 			return element.getElementsByTagName(tag).item(index).getTextContent();
 		} catch (Exception e) {
-			Logger.getInstance().log("Tag " + tag + " no encontrado", LogLevel.WARNING, getClass(), e.getClass());
+			Logger.getInstance().log("Tag " + tag + " no encontrado", LogLevel.DEBUG, getClass(), e.getClass());
 			return "";
 		}
 	}
