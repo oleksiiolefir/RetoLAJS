@@ -22,7 +22,7 @@ public class GestorFicherosXML extends GestorFicheros {
 	private Document document;
 	private NodeList nodeList;
 	
-	public boolean parsearDocumento(String pathFrom) {
+	public boolean parsearDocumento(String pathFrom) throws IOException {
 		if(openFile(pathFrom)) {
 			DocumentBuilderFactory factory = null;
 			try {

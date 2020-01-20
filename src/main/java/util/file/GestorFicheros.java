@@ -21,16 +21,14 @@ public class GestorFicheros {
 	protected ArrayList<File> ficheros;
 	protected BufferedReader bfReader;
 	protected BufferedWriter bfWriter;
-	protected FileReader flReader;
-	protected FileWriter flWriter;
 
 	public GestorFicheros() {
 	}
 
 	public boolean openFile(String path) throws IOException {
 		file = new File(path);
-		if (!file.exists() && file.isFile()) {
-			Logger.getInstance().log("El fichero no existe, se creará uno nuevo", LogLevel.INFO, getClass(), null);
+		if (!file.exists()) {
+			Logger.getInstance().log("El fichero " + file.getPath() + " no existe, se creará uno nuevo", LogLevel.INFO, getClass(), null);
 			if (createPath())
 				return true;
 			else
@@ -61,7 +59,7 @@ public class GestorFicheros {
 			Logger.getInstance().log("Fichero creado con éxito", LogLevel.INFO, getClass(), null);
 			return true;
 		} catch (IOException e) {
-			Logger.getInstance().log("Error al crear el fichero " + file.getAbsolutePath(), LogLevel.ERROR, getClass(),
+			Logger.getInstance().log("Error al crear el fichero " + file.getPath(), LogLevel.ERROR, getClass(),
 					e.getClass());
 			return false;
 		}

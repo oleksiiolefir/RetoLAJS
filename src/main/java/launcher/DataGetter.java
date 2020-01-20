@@ -5,8 +5,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import org.w3c.dom.Element;
+
+import objetos.Alojamiento;
 import util.file.Checksum;
-import util.file.GestorFicheros;
+import util.file.GestorFicherosXML;
 import util.logger.LogLevel;
 import util.logger.Logger;
 
@@ -14,22 +17,27 @@ public class DataGetter {
 	
 	private static final String PATH_URLS = "files/urls.txt";
 	private static final String PATH_CHECKSUMS = "files/checksums.txt";
+	private static final String DIR_XML = "files/xml/";
 
-	private GestorFicheros fileManager;
+	private GestorFicherosXML fileManager;
 	private ArrayList<String> urls;
 	private ArrayList<String> checksums;
+	private ArrayList<Alojamiento> alojamientos;
 	
 	public DataGetter() {
-		fileManager = new GestorFicheros();
+		fileManager = new GestorFicherosXML();
+		alojamientos = new ArrayList<Alojamiento>();
 	}
 	
-	public void start() {
+	public ArrayList<Alojamiento> getData() {
+		loadData();
+		return alojamientos;
+	}
+	
+	private void loadData() {
 		loadUrls();
 		readUrls();
-	}
-	
-	public ArrayList<?> getData(){
-		return null;
+		refreshChecksumFile();
 	}
 	
 	private void loadUrls() {
@@ -37,41 +45,104 @@ public class DataGetter {
 			urls = fileManager.readFile(PATH_URLS);
 			checksums = fileManager.readFile(PATH_CHECKSUMS);
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.getInstance().log("Error al leer ficheros de carga de datos", LogLevel.ERROR, getClass(), e.getClass());
 		}
 	}
-	
+
 	private void readUrls() {
-		if(checksums!=null) {
-			for(int i=0;i<urls.size();i++) {
-				if(checksums.get(i)!=null) {
-					String checksum = compareChecksums(urls.get(i), checksums.get(i));
-					if(!checksum.equals(checksums.get(i)))
-						refreshChecksum(checksum,i);
+		for (int i = 0; i < urls.size(); i++) {
+			try {
+				String[] urlSplit = urls.get(i).split("/");
+				if (checksums.size()<=i) {
+					downloadUrl(urls.get(i), urlSplit[5]);
+					refreshChecksum(getUrlMD5(urls.get(i)), i);
+					readXml(DIR_XML + urlSplit[5] + ".xml");
+				} else {
+					String newChecksum = getUrlMD5(urls.get(i));
+					if(!cacheUrl(newChecksum, checksums.get(i))) {
+						downloadUrl(urls.get(i), urlSplit[5]);
+						refreshChecksum(newChecksum, i);
+						readXml(DIR_XML + urlSplit[5] + ".xml");
+					}
 				}
+			} catch (IndexOutOfBoundsException e) {
+				Logger.getInstance().log("No hay checksum para comparar", LogLevel.INFO, getClass(), e.getClass());
 			}
 		}
 	}
-	
-	private String compareChecksums(String url, String checksum) {
-		Checksum checker = new Checksum();
+
+	private String getUrlMD5(String url) {
 		try {
-			url = checker.getMD5Checksum(new URL(url));
-		} catch (MalformedURLException e) {
-			Logger.getInstance().log("URL mal formada. No se descargará el archivo", LogLevel.ERROR, getClass(), e.getClass());
+			String checksum = new Checksum().getMD5Checksum(new URL(url));
 			return checksum;
+		} catch (MalformedURLException e) {
+			Logger.getInstance().log("URL mal formada.", LogLevel.ERROR, getClass(), e.getClass());
+			return null;
 		}
+	}
+	
+	private boolean cacheUrl(String url, String checksum) {
 		if(url.equalsIgnoreCase(checksum)) {
 			Logger.getInstance().log("Checksums iguales. No se descargará el archivo", LogLevel.INFO, getClass(), null);
-			return checksum;
+			return true;
 		} else {
 			Logger.getInstance().log("Checksums diferentes. Se descargará el archivo", LogLevel.INFO, getClass(), null);
-			return url;
+			return false;
+		}
+	}
+	
+	private void downloadUrl(String url, String filename) {
+		System.out.println(filename);
+		try {
+			fileManager.downloadFile(new URL(url), DIR_XML + filename + ".xml");
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al descargar archivo", LogLevel.ERROR, getClass(), e.getClass());
 		}
 	}
 	
 	private void refreshChecksum(String newChecksum, int index) {
-		
+		if(index < checksums.size()) 		
+			checksums.remove(index);
+		checksums.add(index, newChecksum);
 	}
 	
+	private void refreshChecksumFile() {
+		try {
+			fileManager.writeFile(PATH_CHECKSUMS, false, checksums);
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al escribir fichero", LogLevel.ERROR, getClass(), e.getClass());
+		}
+	}
+	
+	private void readXml(String filepath) {
+		try {
+			if(fileManager.parsearDocumento(filepath)) {
+				fileManager.cargarNodeList("row");
+				ArrayList<Element> elementos = fileManager.getNodeElementList();
+				for(Element element:elementos) {
+					addAlojamiento(element);
+				}		
+			}
+		} catch (IOException e) {
+			Logger.getInstance().log("Error al abrir fichero xml", LogLevel.ERROR, getClass(), e.getClass());
+		}
+	}
+	
+	private void addAlojamiento(Element element) {
+		Alojamiento alojamiento = new Alojamiento(
+				fileManager.getElementContent(element, "lodgingtype", 0),
+				fileManager.getElementContent(element,"documentname",0),
+				fileManager.getElementContent(element,"turismdescription",1),
+				fileManager.getElementContent(element,"address",0),
+				fileManager.getElementContent(element, "municipality", 0),
+				fileManager.getElementContent(element,"territory",0),
+				fileManager.getElementContent(element,"phone",0),
+				fileManager.getElementContent(element,"tourismemail",0),
+				fileManager.getElementContent(element, "web", 0),
+				fileManager.getElementContent(element,"capacity",0),
+				fileManager.getElementContent(element,"latwgs84",0),
+				fileManager.getElementContent(element,"lonwgs84",0)
+				);
+		alojamientos.add(alojamiento);
+	}	
 }

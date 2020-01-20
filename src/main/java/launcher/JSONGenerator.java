@@ -1,15 +1,20 @@
 package launcher;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import util.file.GestorFicherosJSON;
 
 public class JSONGenerator {
 	
-	private static final String PATH = "files/json";
+	private static final String PATH = "files/json/";
 	
-	public void generateJsonFiles(ArrayList<?> list) {
+	public void generateJsonFile(ArrayList<?> list, String filename) {
 		GestorFicherosJSON jsonFileManager = new GestorFicherosJSON();
-		jsonFileManager.writeFile(PATH, list);		
+		try {
+			jsonFileManager.writeFile(PATH + filename, list);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 }
