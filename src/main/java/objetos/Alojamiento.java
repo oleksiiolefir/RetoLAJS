@@ -24,6 +24,7 @@ public class Alojamiento implements Serializable {
 	@Column(name="descripcion", length=2000) private String descripcion;
 	@Column(name="direccion", length=50) private String direccion;
 	@Column(name="localidad", length=50) private String localidad;
+	@Column(name="provincia", length=50) private String provincia;
 	@Column(name="telefono", length=50) private String telefono;
 	@Column(name="email", length=100) private String email;
 	@Column(name="web", length=200) private String web;
@@ -38,13 +39,14 @@ public class Alojamiento implements Serializable {
 	}
 
 	public Alojamiento(int idAloj, String tipo, String nombre, String descripcion, String direccion, String localidad,
-			String telefono, String email, String web, int capacidad, float latitud, float longitud) {
+			String provincia, String telefono, String email, String web, int capacidad, float latitud, float longitud) {
 		this.idAloj = idAloj;
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.direccion = direccion;
 		this.localidad = localidad;
+		this.provincia = provincia;
 		this.telefono = telefono;
 		this.email = email;
 		this.web = web;
@@ -100,7 +102,15 @@ public class Alojamiento implements Serializable {
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
+	
+	public String getProvincia() {
+		return this.provincia;
+	}
 
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+	
 	public String getTelefono() {
 		return this.telefono;
 	}
