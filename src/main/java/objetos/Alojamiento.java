@@ -60,7 +60,7 @@ public class Alojamiento implements Serializable {
 		this.direccion = direccion;
 		this.localidad = localidad;
 		this.provincia = provincia;
-		this.telefono = telefono;
+		this.telefono = telefono.replaceAll(" ", "");
 		this.email = email;
 		this.web = web;
 		try {			
