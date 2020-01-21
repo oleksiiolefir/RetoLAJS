@@ -51,23 +51,16 @@ public class DataGetter {
 
 	private void readUrls() {
 		for (int i = 0; i < urls.size(); i++) {
-			try {
-				String[] urlSplit = urls.get(i).split("/");
-				if (checksums.size()<=i) {
-					downloadUrl(urls.get(i), urlSplit[5]);
-					refreshChecksum(getUrlMD5(urls.get(i)), i);
-					readXml(DIR_XML + urlSplit[5] + ".xml");
-				} else {
-					String newChecksum = getUrlMD5(urls.get(i));
-					if(!cacheUrl(newChecksum, checksums.get(i))) {
-						downloadUrl(urls.get(i), urlSplit[5]);
-						refreshChecksum(newChecksum, i);
-						readXml(DIR_XML + urlSplit[5] + ".xml");
-					}
-				}
-			} catch (IndexOutOfBoundsException e) {
-				Logger.getInstance().log("No hay checksum para comparar", LogLevel.INFO, getClass(), e.getClass());
-			}
+			String[] urlSplit = urls.get(i).split("/");
+			String filepath = DIR_XML + urlSplit[5] + ".xml";
+			String newChecksum = getUrlMD5(urls.get(i));
+			String oldChecksum = (checksums.size() -1 < i) ? "" : checksums.get(i);
+					
+			if(!cacheUrl(newChecksum, oldChecksum)) {
+				downloadUrl(urls.get(i), filepath);
+				refreshChecksum(newChecksum, i);
+				readXml(filepath);
+			}		
 		}
 	}
 
@@ -81,8 +74,8 @@ public class DataGetter {
 		}
 	}
 	
-	private boolean cacheUrl(String url, String checksum) {
-		if(url.equalsIgnoreCase(checksum)) {
+	private boolean cacheUrl(String newChecksum, String oldChecksum) {
+		if(newChecksum.equalsIgnoreCase(oldChecksum)) {
 			Logger.getInstance().log("Checksums iguales. No se descargará el archivo", LogLevel.INFO, getClass(), null);
 			return true;
 		} else {
@@ -91,10 +84,9 @@ public class DataGetter {
 		}
 	}
 	
-	private void downloadUrl(String url, String filename) {
-		System.out.println(filename);
+	private void downloadUrl(String url, String filepath) {
 		try {
-			fileManager.downloadFile(new URL(url), DIR_XML + filename + ".xml");
+			fileManager.downloadFile(new URL(url), filepath);
 		} catch (IOException e) {
 			Logger.getInstance().log("Error al descargar archivo", LogLevel.ERROR, getClass(), e.getClass());
 		}

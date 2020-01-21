@@ -11,6 +11,7 @@ public class Logger {
 
 	private static Logger logger;
 	private static File logFile;
+	private static int minLevel;
 	private static final String DIR_LOG = "files/log/";
 	private static final String FECHA = "yyyy-MM-dd";
 	// private static final String HORA = "HH:mm:ss";
@@ -24,27 +25,35 @@ public class Logger {
 			logFile = new File(DIR_LOG + "log_" + getCurrentDate(FECHA) + ".log");
 			createLogFile();
 		}
-		if (logger == null)
+		if (logger == null) {
 			logger = new Logger();
+			minLevel = 0;
+		}
 		return logger;
 	}
 
-	public void setLogLevel(LogLevel logLevel) {
-		
+	public void setMinLevel(LogLevel logLevel) {
+		Logger.minLevel = logLevel.ordinal();
 	}
-	
-	public void log(String mensaje, LogLevel logLevel, Class<?> clase, Class<?> exception) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("[" + getCurrentDate(FECHA_HORA) + "]");
-		if (logLevel != null) sb.append(logLevel);
-		if (clase != null) sb.append("[Class: " + clase.getTypeName() + "]");
-		if (exception != null) sb.append("[Exception: " + exception.getSimpleName() + "]");
-		if (mensaje != null) sb.append(" " + mensaje);
 
-		try {
-			writeToFile(sb.toString());
-		} catch (IOException e) {
-			System.out.println("Error al escribir log");
+	private boolean checkLogLevel(int logLevel) {
+		return (Logger.minLevel <= logLevel) ? true : false;
+	}
+
+	public void log(String mensaje, LogLevel logLevel, Class<?> clase, Class<?> exception) {
+		if (checkLogLevel(logLevel.ordinal())) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("[" + getCurrentDate(FECHA_HORA) + "]");
+			if (logLevel != null) sb.append(logLevel);
+			if (clase != null) sb.append("[Class: " + clase.getTypeName() + "]");
+			if (exception != null) sb.append("[Exception: " + exception.getSimpleName() + "]");
+			if (mensaje != null) sb.append(" " + mensaje);
+
+			try {
+				writeToFile(sb.toString());
+			} catch (IOException e) {
+				System.out.println("Error al escribir log");
+			}
 		}
 	}
 

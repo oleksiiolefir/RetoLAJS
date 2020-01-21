@@ -18,7 +18,6 @@ import util.logger.Logger;
 public class GestorFicheros {
 
 	protected File file;
-	protected ArrayList<File> ficheros;
 	protected BufferedReader bfReader;
 	protected BufferedWriter bfWriter;
 
@@ -39,16 +38,13 @@ public class GestorFicheros {
 
 	private boolean createPath() throws IOException {
 		boolean dirsCreated = true;
-		if (file.getParentFile() == null) {
+		if (!file.getParentFile().exists()) {
 			Logger.getInstance().log("El(los) directorio(s) padre no existen, se crearán", LogLevel.INFO, getClass(),
 					null);
-			dirsCreated = createDirs();
+			dirsCreated = createDirs(file.getParentFile());
 		}
 		if (dirsCreated) {
-			if (createFile())
-				return true;
-			else
-				return false;
+			return (createFile()) ? true : false;
 		} else
 			return false;
 	}
@@ -65,8 +61,8 @@ public class GestorFicheros {
 		}
 	}
 
-	private boolean createDirs() throws IOException {
-		if (file.mkdirs()) {
+	private boolean createDirs(File parentFile) throws IOException {
+		if (parentFile.mkdirs()) {
 			Logger.getInstance().log("Directorio(s) padre del fichero creado(s) con éxito", LogLevel.INFO, getClass(),
 					null);
 			return true;
