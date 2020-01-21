@@ -27,11 +27,9 @@ public class GestorFicheros {
 	public boolean openFile(String path) throws IOException {
 		file = new File(path);
 		if (!file.exists()) {
-			Logger.getInstance().log("El fichero " + file.getPath() + " no existe, se creará uno nuevo", LogLevel.INFO, getClass(), null);
-			if (createPath())
-				return true;
-			else
-				return false;
+			Logger.getInstance().log("El fichero " + file.getPath() + " no existe, se creará uno nuevo", LogLevel.INFO,
+					getClass(), null);
+			return (createPath()) ? true : false;
 		}
 		return true;
 	}
@@ -125,36 +123,31 @@ public class GestorFicheros {
 			Logger.getInstance().log("Error al abrir URL", LogLevel.WARNING, getClass(), e.getClass());
 			return false;
 		}
-		if (loadWriter(false)) {
-			if (writeFile(pathTo, false))
-				return true;
-			else {
-				return false;
-			}
-		}
-		return false;
+		return (writeFile(pathTo, false)) ? true : false;
 	}
 
 	protected boolean writeFile(String pathTo, boolean append) throws IOException {
 		if (openFile(pathTo)) {
-			try {
-				String line;
-				while ((line = bfReader.readLine()) != null) {
-					try {
-						bfWriter.write(line);
-					} catch (IOException e) {
-						Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(),
-								e.getClass());
-						return false;
+			if (loadWriter(append)) {
+				try {
+					String line = null;
+					while ((line = bfReader.readLine()) != null) {
+						try {
+							bfWriter.write(line);
+						} catch (IOException e) {
+							Logger.getInstance().log("Error de escritura en buffer", LogLevel.ERROR, getClass(),
+									e.getClass());
+							return false;
+						}
 					}
+					return true;
+				} catch (IOException e) {
+					Logger.getInstance().log("Error de lectura en buffer", LogLevel.ERROR, getClass(), e.getClass());
+					return false;
+				} finally {
+					closeReader();
+					closeWriter();
 				}
-				return true;
-			} catch (IOException e) {
-				Logger.getInstance().log("Error de lectura en buffer", LogLevel.ERROR, getClass(), e.getClass());
-				return false;
-			} finally {
-				closeReader();
-				closeWriter();
 			}
 		}
 		return false;
@@ -181,7 +174,7 @@ public class GestorFicheros {
 		if (openFile(pathTo)) {
 			if (loadWriter(append)) {
 				try {
-					for(String line:lines) {
+					for (String line : lines) {
 						bfWriter.write(line);
 						bfWriter.newLine();
 					}
@@ -196,7 +189,7 @@ public class GestorFicheros {
 		}
 		return false;
 	}
-	
+
 	public ArrayList<String> readFile(String filePath) throws IOException {
 		if (openFile(filePath)) {
 			if (loadReader()) {

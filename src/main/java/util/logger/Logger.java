@@ -44,10 +44,14 @@ public class Logger {
 		if (checkLogLevel(logLevel.ordinal())) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("[" + getCurrentDate(FECHA_HORA) + "]");
-			if (logLevel != null) sb.append(logLevel);
-			if (clase != null) sb.append("[Class: " + clase.getTypeName() + "]");
-			if (exception != null) sb.append("[Exception: " + exception.getSimpleName() + "]");
-			if (mensaje != null) sb.append(" " + mensaje);
+			if (logLevel != null)
+				sb.append(logLevel);
+			if (clase != null)
+				sb.append("[Class: " + clase.getTypeName() + "]");
+			if (exception != null)
+				sb.append("[Exception: " + exception.getSimpleName() + "]");
+			if (mensaje != null)
+				sb.append(" " + mensaje);
 
 			try {
 				writeToFile(sb.toString());
@@ -71,12 +75,14 @@ public class Logger {
 	}
 
 	private static void createLogFile() {
-		if (!logFile.exists()) {
-			try {
-				logFile.createNewFile();
-			} catch (IOException e) {
-				System.out.println("Error al crear archivo log");
-			}
+		try {
+			if (!logFile.exists())
+				if (!logFile.getParentFile().exists())
+					if (logFile.getParentFile().mkdirs())
+						logFile.createNewFile();
+		} catch (IOException e) {
+			System.out.println("Error al crear archivo log");
 		}
+
 	}
 }

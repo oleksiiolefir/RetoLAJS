@@ -1,10 +1,16 @@
-[2020-01-21 11:49:04]DEBUG Inicio sesion
-[2020-01-21 11:49:04]INFO[Class: util.file.GestorFicherosXML] El fichero files\checksums.txt no existe, se creará uno nuevo
-[2020-01-21 11:49:04]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
-[2020-01-21 11:49:17]INFO[Class: launcher.DataGetter] Checksums diferentes. Se descargará el archivo
-[2020-01-21 12:07:26]DEBUG Inicio sesion
-[2020-01-21 12:07:26]INFO[Class: util.file.GestorFicheros] El fichero prueba\prueba2\prueba3\fichero.txt no existe, se creará uno nuevo
-[2020-01-21 12:07:26]INFO[Class: util.file.GestorFicheros] El(los) directorio(s) padre no existen, se crearán
-[2020-01-21 12:07:26]INFO[Class: util.file.GestorFicheros] Directorio(s) padre del fichero creado(s) con éxito
-[2020-01-21 12:07:26]INFO[Class: util.file.GestorFicheros] Fichero creado con éxito
-[2020-01-21 12:07:37]DEBUG Inicio sesion
+[2020-01-21 12:31:03]DEBUG Inicio sesion
+[2020-01-21 12:31:03]INFO[Class: launcher.DataGetter] Checksums diferentes. Se descargará el archivo
+[2020-01-21 12:31:03]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\campings_de_euskadi.xml no existe, se creará uno nuevo
+[2020-01-21 12:31:03]INFO[Class: util.file.GestorFicherosXML] El(los) directorio(s) padre no existen, se crearán
+[2020-01-21 12:31:03]INFO[Class: util.file.GestorFicherosXML] Directorio(s) padre del fichero creado(s) con éxito
+[2020-01-21 12:31:03]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-21 12:31:03]INFO[Class: launcher.DataGetter] Checksums diferentes. Se descargará el archivo
+[2020-01-21 12:31:03]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\albergues_de_euskadi.xml no existe, se creará uno nuevo
+[2020-01-21 12:31:03]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-21 12:31:05]INFO[Class: launcher.DataGetter] Checksums diferentes. Se descargará el archivo
+[2020-01-21 12:31:05]INFO[Class: util.file.GestorFicherosXML] El fichero files\xml\alojamientos_rurales_euskadi.xml no existe, se creará uno nuevo
+[2020-01-21 12:31:05]INFO[Class: util.file.GestorFicherosXML] Fichero creado con éxito
+[2020-01-21 12:31:05]INFO[Class: util.file.GestorFicherosJSON] El fichero files\json\alojamientos.json no existe, se creará uno nuevo
+[2020-01-21 12:31:05]INFO[Class: util.file.GestorFicherosJSON] El(los) directorio(s) padre no existen, se crearán
+[2020-01-21 12:31:05]INFO[Class: util.file.GestorFicherosJSON] Directorio(s) padre del fichero creado(s) con éxito
+[2020-01-21 12:31:05]INFO[Class: util.file.GestorFicherosJSON] Fichero creado con éxito
