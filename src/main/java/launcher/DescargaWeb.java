@@ -81,7 +81,7 @@ public class DescargaWeb {
 					}
 					try {
 						aloj1.setDescripcion(
-								element.getElementsByTagName("turismdescription").item(0).getTextContent());
+								element.getElementsByTagName("turismdescription").item(1).getTextContent());
 					} catch (Exception ex) {
 						aloj1.setDescripcion(" ");
 					}
