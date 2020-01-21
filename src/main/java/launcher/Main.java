@@ -11,9 +11,12 @@ public class Main {
 	public static void main(String[] args) {	
 		Logger.getInstance().log("Inicio sesion", LogLevel.DEBUG, null, null);
 		Logger.getInstance().setMinLevel(LogLevel.INFO);
+		
+		
 		ArrayList<Alojamiento> list = new DataGetter().getData();
 		new JSONGenerator().generateJsonFile(list, "alojamientos.json");
 		new DataSetter(list);
+		
 	}
 
 }
