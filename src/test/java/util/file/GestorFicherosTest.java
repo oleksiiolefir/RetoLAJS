@@ -1,74 +1,66 @@
 package util.file;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class GestorFicherosTest {
 
+	private static GestorFicheros fileManager;
+	private Field fFile;
+	private Field fReader;
+	private Field fWriter;
+	private static Field[] fields;
+	private static Method[] methods;
+	
+	@BeforeClass
+	public static void setup() throws IOException {
+		fileManager = new GestorFicheros();
+		fields = GestorFicheros.class.getDeclaredFields();
+		methods = GestorFicheros.class.getDeclaredMethods();
+	}
+	
+	@Before
+	public void set() {
+		
+	}
+	
+	@After
+	public void clean() {
+		
+	}
+	
+	@AfterClass
+	public static void cleanup() throws IOException {
+		fileManager.deleteFile();
+	}
+	
 	@Test
-	public final void testGestorFicheros() {
-		fail("Not yet implemented"); // TODO
+	public void testGestorFicheros() {
+		assertNull(fileManager.file);
+		assertNull(fileManager.bfReader);
+		assertNull(fileManager.bfWriter);
 	}
 
 	@Test
-	public final void testOpenFile() {
-		fail("Not yet implemented"); // TODO
+	public void testOpenFileExists() throws IOException {
+		assertTrue(fileManager.openFile("test/test.txt"));
 	}
-
 	@Test
-	public final void testLoadReaderInputStream() {
-		fail("Not yet implemented"); // TODO
+	public void testOpenFileNotExistsTrue() {
+		assertTrue(fileManager.openFile("test/test.txt"));
 	}
-
 	@Test
-	public final void testLoadReader() {
-		fail("Not yet implemented"); // TODO
+	public void testOpenFileNotExistsFalse() {
+		assertTrue(fileManager.openFile("test/test.txt"));
 	}
-
-	@Test
-	public final void testLoadWriter() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testCloseReader() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testCloseWriter() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testDownloadFile() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testWriteFileStringBoolean() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testWriteFileStringBooleanString() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testWriteFileStringBooleanArrayListOfString() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testReadFile() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public final void testDeleteFile() {
-		fail("Not yet implemented"); // TODO
-	}
-
 }
