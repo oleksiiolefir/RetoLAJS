@@ -3,6 +3,7 @@ package util.file;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -16,32 +17,23 @@ import org.junit.Test;
 public class GestorFicherosTest {
 
 	private static GestorFicheros fileManager;
-	private Field fFile;
-	private Field fReader;
-	private Field fWriter;
-	private static Field[] fields;
-	private static Method[] methods;
+	private Method method;
+	private Field field;
 	
 	@BeforeClass
-	public static void setup() throws IOException {
-		fileManager = new GestorFicheros();
-		fields = GestorFicheros.class.getDeclaredFields();
-		methods = GestorFicheros.class.getDeclaredMethods();
-	}
+	public static void setup() {}
 	
 	@Before
 	public void set() {
-		
+		fileManager = new GestorFicheros();
 	}
 	
 	@After
-	public void clean() {
-		
-	}
+	public void clean() {}
 	
 	@AfterClass
 	public static void cleanup() throws IOException {
-		fileManager.deleteFile();
+		//fileManager.deleteFile();
 	}
 	
 	@Test
@@ -52,15 +44,30 @@ public class GestorFicherosTest {
 	}
 
 	@Test
+	public void testCreateFile() throws Throwable {
+		File testFile = new File("test/testCreateFile.txt");
+		
+		Field field1 = GestorFicheros.class.getDeclaredField("file");
+		field1.setAccessible(true);
+		field1.set(fileManager, testFile);
+		
+		Method method1 = GestorFicheros.class.getDeclaredMethod("createFile");
+		method1.setAccessible(true);
+		method1.invoke(fileManager);
+		
+		assertTrue(testFile.exists());
+	}
+	/*
+	@Test
 	public void testOpenFileExists() throws IOException {
 		assertTrue(fileManager.openFile("test/test.txt"));
 	}
-	@Test
-	public void testOpenFileNotExistsTrue() {
+	@Test(expected=IOException.class)
+	public void testOpenFileNotExistsTrue() throws IOException {
 		assertTrue(fileManager.openFile("test/test.txt"));
 	}
 	@Test
-	public void testOpenFileNotExistsFalse() {
+	public void testOpenFileNotExistsFalse() throws IOException {
 		assertTrue(fileManager.openFile("test/test.txt"));
-	}
+	}*/
 }

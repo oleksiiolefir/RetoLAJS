@@ -23,7 +23,7 @@ public class GestorFicheros {
 
 	public GestorFicheros() {
 	}
-
+/*
 	public boolean openFile(String path) throws IOException {
 		file = new File(path);
 		if (!file.exists()) {
@@ -47,6 +47,7 @@ public class GestorFicheros {
 			return false;
 	}
 
+	
 	private boolean createFile() {
 		try {
 			file.createNewFile();
@@ -57,8 +58,17 @@ public class GestorFicheros {
 					e.getClass());
 			return false;
 		}
-	}
+	}*/
 
+	private void createFile() throws IOException {
+		try {
+			file.createNewFile();
+			Logger.getInstance().log("Fichero creado", LogLevel.INFO, getClass(), null);
+		} catch (Throwable e) {
+			throw new IOException("Error al crear fichero", e);
+		}
+	}
+	/*
 	private boolean createDirs(File parentFile) throws IOException {
 		if (parentFile.mkdirs()) {
 			Logger.getInstance().log("Directorio(s) padre del fichero creado(s) con éxito", LogLevel.INFO, getClass(),
@@ -214,5 +224,5 @@ public class GestorFicheros {
 		if (file.exists()) {
 			file.delete();
 		}
-	}
+	}*/
 }
