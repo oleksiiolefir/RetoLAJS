@@ -21,62 +21,27 @@ public class GestorFicheros {
 	protected BufferedReader bfReader;
 	protected BufferedWriter bfWriter;
 
-	public GestorFicheros() {
-	}
-/*
-	public boolean openFile(String path) throws IOException {
-		file = new File(path);
+	public GestorFicheros() {}
+
+	protected boolean openFile(String filepath) throws IOException {
+		file = new File(filepath);
 		if (!file.exists()) {
-			Logger.getInstance().log("El fichero " + file.getPath() + " no existe, se creará uno nuevo", LogLevel.INFO,
-					getClass(), null);
-			return (createPath()) ? true : false;
-		}
-		return true;
-	}
-
-	private boolean createPath() throws IOException {
-		boolean dirsCreated = true;
-		if (!file.getParentFile().exists()) {
-			Logger.getInstance().log("El(los) directorio(s) padre no existen, se crearán", LogLevel.INFO, getClass(),
-					null);
-			dirsCreated = createDirs(file.getParentFile());
-		}
-		if (dirsCreated) {
-			return (createFile()) ? true : false;
-		} else
-			return false;
-	}
-
-	
-	private boolean createFile() {
-		try {
-			file.createNewFile();
-			Logger.getInstance().log("Fichero creado con éxito", LogLevel.INFO, getClass(), null);
+			Logger.getInstance().log("El fichero " + file.getPath() + " no existe, se creará uno nuevo", LogLevel.INFO,getClass(), null);
+			createFile();
+		} 
+		if(file.isFile())
 			return true;
-		} catch (IOException e) {
-			Logger.getInstance().log("Error al crear el fichero " + file.getPath(), LogLevel.ERROR, getClass(),
-					e.getClass());
+		else
 			return false;
-		}
-	}*/
+	}
 
 	private void createFile() throws IOException {
 		try {
+			if(!file.getParentFile().exists())
+				file.getParentFile().mkdirs();
 			file.createNewFile();
-			Logger.getInstance().log("Fichero creado", LogLevel.INFO, getClass(), null);
 		} catch (Throwable e) {
-			throw new IOException("Error al crear fichero", e);
-		}
-	}
-	/*
-	private boolean createDirs(File parentFile) throws IOException {
-		if (parentFile.mkdirs()) {
-			Logger.getInstance().log("Directorio(s) padre del fichero creado(s) con éxito", LogLevel.INFO, getClass(),
-					null);
-			return true;
-		} else {
-			Logger.getInstance().log("Error al crear el(los) directorio(s)", LogLevel.ERROR, getClass(), null);
-			return false;
+			throw new IOException("Error al crear fichero " + file.getPath(), e);
 		}
 	}
 
@@ -224,5 +189,5 @@ public class GestorFicheros {
 		if (file.exists()) {
 			file.delete();
 		}
-	}*/
+	}
 }
