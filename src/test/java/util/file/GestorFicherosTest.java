@@ -1,5 +1,7 @@
 package util.file;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -9,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
+import java.net.URL;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,19 +22,19 @@ import org.junit.Test;
 public class GestorFicherosTest {
 
 	private static GestorFicheros fileManager;
+	private static Field fFile;
+	private static Field fReader;
+	private static Field fWriter;
+	private Method method;
+
 	private File testFile;
 	private BufferedReader testReader;
 	private BufferedWriter testWriter;
-	private Method method;
-	private Field fFile, fReader, fWriter;
-
 
 	@BeforeClass
-	public static void setup() {}
-
-	@Before
-	public void set() throws Exception {
-		fileManager = new GestorFicheros();
+	public static void setup() throws NoSuchFieldException, IOException{
+		File newFile = new File("test\\testFileExists.txt");
+		newFile.createNewFile();
 		fFile = GestorFicheros.class.getDeclaredField("file");
 		fFile.setAccessible(true);
 		fReader = GestorFicheros.class.getDeclaredField("bfReader");
@@ -41,13 +43,20 @@ public class GestorFicherosTest {
 		fWriter.setAccessible(true);
 	}
 
+	@Before
+	public void set() {
+		fileManager = new GestorFicheros();
+	}
+
 	@After
-	public void clean() {
-		// borrar ficheros creados
+	public void clean() throws IOException {
+		
 	}
 
 	@AfterClass
-	public static void cleanup() throws IOException {}
+	public static void cleanup() throws IOException {
+		//borrar carpeta 'test/'
+	}
 
 	@Test
 	public void testGestorFicheros() {
@@ -55,53 +64,118 @@ public class GestorFicherosTest {
 		assertNull(fileManager.bfReader);
 		assertNull(fileManager.bfWriter);
 	}
-
-	@Test
-	public void testOpenFile() {
-		
-	}
-
-	@Test
-	public void testCreateFileTrue() throws Throwable {
-		method = GestorFicheros.class.getDeclaredMethod("createFile");
-		method.setAccessible(true);
-
-		File testFile = new File("test/testCreateFile.txt");
-		File testFile2 = new File("test/test");
-		ArrayList<File> testFiles = new ArrayList<File>();
-		testFiles.add(testFile);
-		testFiles.add(testFile2);
-		for (File file : testFiles) {
-			fFile.set(fileManager, file);
-			method.invoke(fileManager);
-			assertTrue(file.exists());
-		}
-		// borrar archivos
-	}
 	
 	@Test(expected=IOException.class)
-	public void testCreateFileException() throws Throwable {
+	public void testOpenFile() throws Throwable {
+		method = GestorFicheros.class.getDeclaredMethod("openFile", String.class);
+		method.setAccessible(true);
+		
+		String filepath = "test\\testFileExists.txt";
+		method.invoke(fileManager, filepath);
+		assertEquals(fileManager.file.getPath(), filepath);
+		
+		filepath = "test\\testFileNotExists.txt";
+		method.invoke(fileManager, filepath);
+		assertEquals(fileManager.file.getPath(), filepath);
+		
+		filepath = "";
+		try {			
+			method.invoke(fileManager, filepath);
+		} catch (Throwable e) {
+			assertNull(fileManager.file);
+			throw e.getCause();
+		}
+	}
+	
+	@Test(expected = IOException.class)
+	public void testCreateFile() throws Throwable {
 		method = GestorFicheros.class.getDeclaredMethod("createFile");
 		method.setAccessible(true);
 
-		File testFile = new File("");
+		testFile = new File("test\\testCreateFile.txt");
 		fFile.set(fileManager, testFile);
-
+		method.invoke(fileManager);
+		assertTrue(testFile.exists());
+		
+		testFile = new File("test\\test\\test.txt");
+		fFile.set(fileManager, testFile);
+		method.invoke(fileManager);
+		assertTrue(testFile.exists());	
+		
+		testFile = new File("");
+		fFile.set(fileManager, testFile);
 		try {
 			method.invoke(fileManager);
 		} catch (Throwable e) {
 			throw e.getCause();
 		}
 	}
+	
+	@Test(expected=IOException.class)
+	public void testLoadURL() throws Throwable{
+		method = GestorFicheros.class.getDeclaredMethod("loadURL", URL.class);
+		method.setAccessible(true);
+		
+		URL testURL = null;
+		method.invoke(fileManager, testURL);
+		assertNull(fileManager.bfReader);
+		
+		testURL = new URL("http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/campings_de_euskadi/opendata/alojamientos.xml");
+		method.invoke(fileManager, testURL);
+		assertNotNull(fileManager.bfReader);
+				
+		testURL = new URL("http://exception.com/testException.xml");
+		try {			
+			method.invoke(fileManager, testURL);
+		} catch (Throwable e) {
+			assertNull(fileManager.bfReader);
+			throw e.getCause();
+		}
+	}
 
-	/*
-	 * @Test public void testOpenFileExists() throws IOException {
-	 * assertTrue(fileManager.openFile("test/test.txt")); }
-	 * 
-	 * @Test(expected=IOException.class) public void testOpenFileNotExistsTrue()
-	 * throws IOException { assertTrue(fileManager.openFile("test/test.txt")); }
-	 * 
-	 * @Test public void testOpenFileNotExistsFalse() throws IOException {
-	 * assertTrue(fileManager.openFile("test/test.txt")); }
-	 */
+	@Test(expected=IOException.class)
+	public void testLoadReader() throws Throwable {
+		method = GestorFicheros.class.getDeclaredMethod("loadReader");
+		method.setAccessible(true);
+		
+		testFile = new File("test\\testFileExists.txt");
+		fFile.set(fileManager, testFile);
+		method.invoke(fileManager);
+		assertNotNull(fileManager.bfReader);
+		
+		fFile.set(fileManager, null);
+		try {
+			method.invoke(fileManager);
+		} catch (Throwable e) {
+			assertNull(fileManager.bfReader);
+			throw e.getCause();
+		}
+	}
+	
+	@Test(expected=IOException.class)
+	public void testLoadWriter() throws Throwable {
+		method = GestorFicheros.class.getDeclaredMethod("loadWriter", boolean.class);
+		method.setAccessible(true);
+		
+		testFile = new File("test\\testFileExists.txt");
+		fFile.set(fileManager, testFile);
+		method.invoke(fileManager,true);
+		assertNotNull(fileManager.bfWriter);
+		
+		fFile.set(fileManager, null);
+		try {
+			method.invoke(fileManager,false);
+		} catch (Throwable e) {
+			assertNull(fileManager.bfWriter);
+			throw e.getCause();
+		}
+	}
+	
+	@Test
+	public void testCloseReader() throws Throwable {
+		method = GestorFicheros.class.getDeclaredMethod("closeReader");
+		method.setAccessible(true);
+		
+		method.invoke(fileManager);
+	}
 }

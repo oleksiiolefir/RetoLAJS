@@ -23,7 +23,7 @@ public class GestorFicherosXML extends GestorFicheros {
 	private NodeList nodeList;
 	
 	public boolean parsearDocumento(String pathFrom) throws IOException {
-		if(openFile(pathFrom)) {
+		openFile(pathFrom);
 			DocumentBuilderFactory factory = null;
 			try {
 				factory = DocumentBuilderFactory.newInstance();
@@ -48,8 +48,6 @@ public class GestorFicherosXML extends GestorFicheros {
 			}
 			document.getDocumentElement().normalize();
 			return true;
-		}
-		return false;
 	}
 
 	public void cargarNodeList(String tag) {
