@@ -24,8 +24,6 @@ public class GestorFicherosTest {
 
 	private static GestorFicheros fileManager;
 	private static Field fFile;
-	private static Field fReader;
-	private static Field fWriter;
 	private Method method;
 
 	private File testFile;
@@ -37,10 +35,6 @@ public class GestorFicherosTest {
 
 		fFile = GestorFicheros.class.getDeclaredField("file");
 		fFile.setAccessible(true);
-		fReader = GestorFicheros.class.getDeclaredField("bfReader");
-		fReader.setAccessible(true);
-		fWriter = GestorFicheros.class.getDeclaredField("bfWriter");
-		fWriter.setAccessible(true);
 	}
 
 	@Before
