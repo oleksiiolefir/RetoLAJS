@@ -47,10 +47,11 @@ public class GestorFicheros {
 	}
 
 	protected void loadURL(URL url) throws IOException {
-		if(url!=null)
+		if (url != null)
 			try {
-				bfReader = new BufferedReader(new InputStreamReader(url.openStream()));				
+				bfReader = new BufferedReader(new InputStreamReader(url.openStream()));
 			} catch (Throwable e) {
+				bfReader = null;
 				throw new IOException("Error al cargar URL", e);
 			}
 	}
@@ -59,6 +60,7 @@ public class GestorFicheros {
 		try {
 			bfReader = new BufferedReader(new FileReader(file));
 		} catch (Throwable e) {
+			bfReader = null;
 			throw new IOException("Error al cargar reader. No se encuentra el fichero", e);
 		}
 	}
@@ -67,23 +69,8 @@ public class GestorFicheros {
 		try {
 			bfWriter = new BufferedWriter(new FileWriter(file, append));
 		} catch (Throwable e) {
+			bfWriter = null;
 			throw new IOException("Error al cargar writer", e);
-		}
-	}
-
-	protected void closeReader() throws IOException {
-		try {
-			bfReader.close();
-		} catch (Throwable e) {
-			throw new IOException("Error al cerrar reader", e);
-		}
-	}
-
-	protected void closeWriter() throws IOException {
-		try {
-			bfWriter.close();
-		} catch (Throwable e) {
-			throw new IOException("Error al cerrar writer", e);
 		}
 	}
 
@@ -108,8 +95,8 @@ public class GestorFicheros {
 		} catch (Throwable e) {
 			throw new IOException("Error al escribir fichero", e);
 		} finally {
-			closeReader();
-			closeWriter();
+			bfReader.close();
+			bfWriter.close();
 		}
 	}
 
@@ -122,7 +109,7 @@ public class GestorFicheros {
 		} catch (Throwable e) {
 			throw new IOException("Error al escribir fichero", e);
 		} finally {
-			closeWriter();
+			bfWriter.close();
 		}
 	}
 
@@ -138,7 +125,7 @@ public class GestorFicheros {
 		} catch (Throwable e) {
 			throw new IOException("Error al escribir fichero", e);
 		} finally {
-			closeWriter();
+			bfWriter.close();
 		}
 	}
 
@@ -154,7 +141,7 @@ public class GestorFicheros {
 		} catch (Throwable e) {
 			throw new IOException("Error al escribir fichero", e);
 		} finally {
-			closeReader();
+			bfReader.close();
 		}
 	}
 
@@ -164,9 +151,14 @@ public class GestorFicheros {
 		bfWriter = null;
 	}
 
-	public void deleteFile() {
-		if (file != null)
-			if (file.exists())
+	public void deleteFile(String filepath) {
+		file = new File(filepath);
+		if (file.isDirectory()) 
+			for (File file : file.listFiles()) {
+				if (file.isDirectory())
+					deleteFile(file.getPath());
 				file.delete();
+			}
+		file.delete();	
 	}
 }

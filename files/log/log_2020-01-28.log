@@ -1,0 +1,45 @@
+[2020-01-28 08:32:33]INFO[Class: util.file.GestorFicheros] El fichero test\testFileExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:32:33]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:32:33]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 08:34:51]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:34:51]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 08:39:43]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:39:43]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 08:50:45]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:50:45]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 08:52:17]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:52:17]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 08:52:17]INFO[Class: util.file.GestorFicheros] El fichero test\testFile.txt no existe, se creará uno nuevo
+[2020-01-28 08:54:35]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:54:35]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 08:54:35]INFO[Class: util.file.GestorFicheros] El fichero test\testFile.txt no existe, se creará uno nuevo
+[2020-01-28 08:54:35]INFO[Class: util.file.GestorFicheros] El fichero test\testFile no existe, se creará uno nuevo
+[2020-01-28 08:57:44]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 08:57:44]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 08:57:44]INFO[Class: util.file.GestorFicheros] El fichero test\testFile.txt no existe, se creará uno nuevo
+[2020-01-28 08:57:44]WARNING[Class: util.file.GestorFicheros][Exception: IOException] Error al descargar archivo
+[2020-01-28 09:04:15]INFO[Class: util.file.GestorFicheros] El fichero test\testWriteFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:04:16]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 09:04:16]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 09:04:16]INFO[Class: util.file.GestorFicheros] El fichero test\testFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:04:16]WARNING[Class: util.file.GestorFicheros][Exception: IOException] Error al descargar archivo
+[2020-01-28 09:19:11]INFO[Class: util.file.GestorFicheros] El fichero test\testWriteFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:19:11]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 09:19:11]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 09:19:11]INFO[Class: util.file.GestorFicheros] El fichero test\testWriteFileLines.txt no existe, se creará uno nuevo
+[2020-01-28 09:19:11]INFO[Class: util.file.GestorFicheros] El fichero test\testFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:19:11]WARNING[Class: util.file.GestorFicheros][Exception: IOException] Error al descargar archivo
+[2020-01-28 09:27:03]INFO[Class: util.file.GestorFicheros] El fichero test\testWriteFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:27:03]INFO[Class: util.file.GestorFicheros] El fichero test\testRead.txt no existe, se creará uno nuevo
+[2020-01-28 09:27:04]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 09:27:04]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 09:27:04]INFO[Class: util.file.GestorFicheros] El fichero test\testWriteFileLines.txt no existe, se creará uno nuevo
+[2020-01-28 09:27:04]INFO[Class: util.file.GestorFicheros] El fichero test\testFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:27:04]WARNING[Class: util.file.GestorFicheros][Exception: IOException] Error al descargar archivo
+[2020-01-28 09:30:55]INFO[Class: util.file.GestorFicheros] El fichero test\testWriteFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:30:55]INFO[Class: util.file.GestorFicheros] El fichero test\testRead.txt no existe, se creará uno nuevo
+[2020-01-28 09:30:55]INFO[Class: util.file.GestorFicheros] El fichero test\testFileNotExists.txt no existe, se creará uno nuevo
+[2020-01-28 09:30:55]INFO[Class: util.file.GestorFicheros] El fichero  no existe, se creará uno nuevo
+[2020-01-28 09:30:55]INFO[Class: util.file.GestorFicheros] El fichero test\testWriteFileLines.txt no existe, se creará uno nuevo
+[2020-01-28 09:30:55]INFO[Class: util.file.GestorFicheros] El fichero test\testFile.txt no existe, se creará uno nuevo
+[2020-01-28 09:30:56]WARNING[Class: util.file.GestorFicheros][Exception: IOException] Error al descargar archivo
