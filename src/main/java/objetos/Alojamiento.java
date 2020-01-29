@@ -19,6 +19,7 @@ public class Alojamiento implements Serializable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idAloj", unique=true, nullable=false) private int idAloj;
+	
 	@Column(name="tipo", length=50) private String tipo;
 	@Column(name="nombre", length=100) private String nombre;
 	@Column(name="descripcion", length=2000) private String descripcion;
@@ -35,8 +36,8 @@ public class Alojamiento implements Serializable {
 	@OneToMany(mappedBy="alojamiento") 
 	private Set<Reserva> reservas;
 
-	public Alojamiento() {
-	}
+	public Alojamiento() {}
+	
 	public Alojamiento(String tipo, String nombre, String descripcion, String direccion, String localidad,
 			String provincia, String telefono, String email, String web, int capacidad, float latitud, float longitud) {
 		this.tipo = tipo;
@@ -52,6 +53,7 @@ public class Alojamiento implements Serializable {
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
+	
 	public Alojamiento(String tipo, String nombre, String descripcion, String direccion, String localidad,
 			String provincia, String telefono, String email, String web, String capacidad, String latitud, String longitud) {
 		this.tipo = tipo;

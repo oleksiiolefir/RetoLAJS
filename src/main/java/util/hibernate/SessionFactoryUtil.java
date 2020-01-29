@@ -2,51 +2,54 @@ package util.hibernate;
 
 import java.io.File;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import util.logger.LogLevel;
-import util.logger.Logger;
-
 public class SessionFactoryUtil {
 
 	private static SessionFactory sessionFactory;
 	private static Configuration configuration;
-	
-	private static boolean buildSessionFactory() {
+
+	private static void loadConfigFile(String filepath) {
+		try {
+			configuration = new Configuration().configure(new File(filepath));
+			configuration.addAnnotatedClass(objetos.Usuario.class);
+			configuration.addAnnotatedClass(objetos.Alojamiento.class);
+			configuration.addAnnotatedClass(objetos.Reserva.class);
+		} catch (HibernateException e) {
+			throw new HibernateException("Error al cargar archivo de configuracion", e);
+		}
+	}
+
+	private static void buildSessionFactory(String configFilePath) {
 		if (sessionFactory == null) {
 			try {
-				configuration = new Configuration().configure(new File("src/main/java/hibernate.cfg.xml"));		
-				try {
-					configuration.addAnnotatedClass(objetos.Usuario.class);
-					configuration.addAnnotatedClass(objetos.Alojamiento.class);
-					configuration.addAnnotatedClass(objetos.Reserva.class);
-					StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
-					serviceRegistryBuilder.applySettings(configuration.getProperties());
-					ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
-					sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-					return true;
-				} catch (Exception e) {
-					Logger.getInstance().log("Error en la configuración y/o mapeo de Hibernate", LogLevel.ERROR, null, e.getClass());
-					return false;
-				}
-			} catch (Exception e) {
-				Logger.getInstance().log("Error al acceder al archivo de configuración de Hibernate", LogLevel.ERROR, null, e.getClass());
-				return false;
+				loadConfigFile(configFilePath);
+				StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
+				serviceRegistryBuilder.applySettings(configuration.getProperties());
+				ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
+				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+			} catch (HibernateException e) {
+				throw new HibernateException("Error de mapeo de Hibernate", e);
 			}
-		} return true;	
+		}
 	}
 
-	public static SessionFactory getSessionFactory() {
-		buildSessionFactory();
-		return sessionFactory;
+	public static SessionFactory getSessionFactory(String configFilePath) throws HibernateException {
+		try {			
+			buildSessionFactory(configFilePath);
+			return sessionFactory;
+		} catch (HibernateException e) {
+			throw new HibernateException("Error al crear SessionFactory", e);
+		}
 	}
 
-	/*
 	public static void shutdown() {
-		getSessionFactory().close();
-	}*/
-
+		if(sessionFactory!=null)
+			sessionFactory.close(); 
+	}
+	 
 }

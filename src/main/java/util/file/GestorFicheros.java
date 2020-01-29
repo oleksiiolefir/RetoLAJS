@@ -80,7 +80,7 @@ public class GestorFicheros {
 			writeFile(filepath, false);
 			return true;
 		} catch (IOException e) {
-			Logger.getInstance().log("Error al descargar archivo", LogLevel.WARNING, getClass(), e.getClass());
+			Logger.getInstance().log("Error al descargar archivo", LogLevel.WARNING, getClass(), e);
 			return false;
 		}
 	}

@@ -28,7 +28,7 @@ public class GestorFicherosXML extends GestorFicheros {
 			try {
 				factory = DocumentBuilderFactory.newInstance();
 			} catch (FactoryConfigurationError e) {
-				Logger.getInstance().log("El servicio de configuración del documento no está disponible", LogLevel.ERROR, getClass(), e.getClass());
+				Logger.getInstance().log("El servicio de configuración del documento no está disponible", LogLevel.ERROR, getClass(), e);
 				return false;
 			}
 			
@@ -36,14 +36,14 @@ public class GestorFicherosXML extends GestorFicheros {
 			try {
 				documentBuilder = factory.newDocumentBuilder();
 			} catch (ParserConfigurationException e) {
-				Logger.getInstance().log("Error al crear documento con la configuración proporcionada", LogLevel.ERROR, getClass(), e.getClass());
+				Logger.getInstance().log("Error al crear documento con la configuración proporcionada", LogLevel.ERROR, getClass(), e);
 				return false;
 			}
 
 			try {
 				document = documentBuilder.parse(file);
 			} catch (SAXException | IOException e) {
-				Logger.getInstance().log("Error al parsear el fichero", LogLevel.ERROR, getClass(), e.getClass());
+				Logger.getInstance().log("Error al parsear el fichero", LogLevel.ERROR, getClass(), e);
 				return false;
 			}
 			document.getDocumentElement().normalize();
@@ -70,7 +70,7 @@ public class GestorFicherosXML extends GestorFicheros {
 		try {
 			return element.getElementsByTagName(tag).item(index).getTextContent();
 		} catch (Exception e) {
-			Logger.getInstance().log("Tag " + tag + " no encontrado", LogLevel.DEBUG, getClass(), e.getClass());
+			Logger.getInstance().log("Tag " + tag + " no encontrado", LogLevel.DEBUG, getClass(), e);
 			return "";
 		}
 	}

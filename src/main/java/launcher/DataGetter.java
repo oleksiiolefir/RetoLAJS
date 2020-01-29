@@ -45,7 +45,7 @@ public class DataGetter {
 			urls = fileManager.readFile(PATH_URLS);
 			checksums = fileManager.readFile(PATH_CHECKSUMS);
 		} catch (IOException e) {
-			Logger.getInstance().log("Error al leer ficheros de carga de datos", LogLevel.ERROR, getClass(), e.getClass());
+			Logger.getInstance().log("Error al leer ficheros de carga de datos", LogLevel.ERROR, getClass(), e);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class DataGetter {
 			String checksum = new Checksum().getMD5Checksum(new URL(url));
 			return checksum;
 		} catch (MalformedURLException e) {
-			Logger.getInstance().log("URL mal formada.", LogLevel.ERROR, getClass(), e.getClass());
+			Logger.getInstance().log("URL mal formada.", LogLevel.ERROR, getClass(), e);
 			return null;
 		}
 	}
@@ -88,7 +88,7 @@ public class DataGetter {
 		try {
 			fileManager.downloadFile(new URL(url), filepath);
 		} catch (IOException e) {
-			Logger.getInstance().log("Error al descargar archivo", LogLevel.ERROR, getClass(), e.getClass());
+			Logger.getInstance().log("Error al descargar archivo", LogLevel.ERROR, getClass(), e);
 		}
 	}
 	
@@ -102,7 +102,7 @@ public class DataGetter {
 		try {
 			fileManager.writeFile(PATH_CHECKSUMS, false, checksums);
 		} catch (IOException e) {
-			Logger.getInstance().log("Error al escribir fichero", LogLevel.ERROR, getClass(), e.getClass());
+			Logger.getInstance().log("Error al escribir fichero", LogLevel.ERROR, getClass(), e);
 		}
 	}
 	
@@ -116,7 +116,7 @@ public class DataGetter {
 				}		
 			}
 		} catch (IOException e) {
-			Logger.getInstance().log("Error al abrir fichero xml", LogLevel.ERROR, getClass(), e.getClass());
+			Logger.getInstance().log("Error al abrir fichero xml", LogLevel.ERROR, getClass(), e);
 		}
 	}
 	

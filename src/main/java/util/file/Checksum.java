@@ -23,7 +23,7 @@ public class Checksum {
 				md.update(buffer, 0, bytesRead);
 			return md.digest();
 		} catch (IOException e) {
-			Logger.getInstance().log("Error al leer stream de lectura", LogLevel.ERROR, getClass(), e.getClass());
+			Logger.getInstance().log("Error al leer stream de lectura", LogLevel.ERROR, getClass(), e);
 			return null;
 		} finally {
 			stream.close();

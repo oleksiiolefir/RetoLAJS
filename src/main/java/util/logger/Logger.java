@@ -40,7 +40,7 @@ public class Logger {
 		return (Logger.minLevel <= logLevel) ? true : false;
 	}
 
-	public void log(String mensaje, LogLevel logLevel, Class<?> clase, Class<?> exception) {
+	public void log(String mensaje, LogLevel logLevel, Class<?> clase, Throwable exception) {
 		if (checkLogLevel(logLevel.ordinal())) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("[" + getCurrentDate(FECHA_HORA) + "]");
@@ -48,8 +48,10 @@ public class Logger {
 				sb.append(logLevel);
 			if (clase != null)
 				sb.append("[Class: " + clase.getTypeName() + "]");
-			if (exception != null)
-				sb.append("[Exception: " + exception.getSimpleName() + "]");
+			if (exception != null) {
+				sb.append("[Exception: " + exception.getClass().getSimpleName() + "]");
+				sb.append(exception.getLocalizedMessage());
+			}
 			if (mensaje != null)
 				sb.append(" " + mensaje);
 
