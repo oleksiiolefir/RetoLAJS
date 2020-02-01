@@ -1,4 +1,4 @@
-package objetos;
+package entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,8 +19,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idUsr", unique=true, nullable=false) 
-	private int idUsr;
+	@Column(name="idUsr", unique=true, nullable=false) private int idUsr;
 	
 	@Column(name="admin") private boolean admin;
 	@Column(name="username", unique=true, length=50) private String username;

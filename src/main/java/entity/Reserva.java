@@ -1,4 +1,4 @@
-package objetos;
+package entity;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -19,8 +19,7 @@ public class Reserva implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idRes", unique=true, nullable=false) 
-	private int idRes;
+	@Column(name="idRes", unique=true, nullable=false) private int idRes;
 	
 	@ManyToOne @JoinColumn(name="idAloj",nullable=false) 
 	private Alojamiento alojamiento;

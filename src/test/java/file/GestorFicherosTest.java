@@ -1,7 +1,6 @@
-package util.file;
+package file;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -11,8 +10,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,9 +17,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import file.FileManager;
+
 public class GestorFicherosTest {
 
-	private static GestorFicheros fileManager;
+	private static FileManager fileManager;
 	private static Field fFile;
 	private Method method;
 
@@ -30,16 +29,16 @@ public class GestorFicherosTest {
 
 	@BeforeClass
 	public static void setup() throws NoSuchFieldException, IOException {
-		fileManager = new GestorFicheros();
+		fileManager = new FileManager();
 		fileManager.openFile("test\\testFileExists.txt");
 
-		fFile = GestorFicheros.class.getDeclaredField("file");
+		fFile = FileManager.class.getDeclaredField("file");
 		fFile.setAccessible(true);
 	}
 
 	@Before
 	public void set() {
-		fileManager = new GestorFicheros();
+		fileManager = new FileManager();
 	}
 
 	@After
@@ -61,7 +60,7 @@ public class GestorFicherosTest {
 
 	@Test(expected = IOException.class)
 	public void testOpenFile() throws Throwable {
-		method = GestorFicheros.class.getDeclaredMethod("openFile", String.class);
+		method = FileManager.class.getDeclaredMethod("openFile", String.class);
 		method.setAccessible(true);
 
 		String filepath = "test\\testFileExists.txt";
@@ -83,7 +82,7 @@ public class GestorFicherosTest {
 
 	@Test(expected = IOException.class)
 	public void testCreateFile() throws Throwable {
-		method = GestorFicheros.class.getDeclaredMethod("createFile");
+		method = FileManager.class.getDeclaredMethod("createFile");
 		method.setAccessible(true);
 
 		testFile = new File("test\\testCreateFile.txt");
@@ -107,7 +106,7 @@ public class GestorFicherosTest {
 
 	@Test(expected = IOException.class)
 	public void testLoadURL() throws Throwable {
-		method = GestorFicheros.class.getDeclaredMethod("loadURL", URL.class);
+		method = FileManager.class.getDeclaredMethod("loadURL", URL.class);
 		method.setAccessible(true);
 
 		URL testURL = null;
@@ -130,7 +129,7 @@ public class GestorFicherosTest {
 
 	@Test(expected = IOException.class)
 	public void testLoadReader() throws Throwable {
-		method = GestorFicheros.class.getDeclaredMethod("loadReader");
+		method = FileManager.class.getDeclaredMethod("loadReader");
 		method.setAccessible(true);
 
 		testFile = new File("test\\testFileExists.txt");
@@ -149,7 +148,7 @@ public class GestorFicherosTest {
 
 	@Test(expected = IOException.class)
 	public void testLoadWriter() throws Throwable {
-		method = GestorFicheros.class.getDeclaredMethod("loadWriter", boolean.class);
+		method = FileManager.class.getDeclaredMethod("loadWriter", boolean.class);
 		method.setAccessible(true);
 
 		testFile = new File("test\\testFileExists.txt");
@@ -165,18 +164,20 @@ public class GestorFicherosTest {
 			throw e.getCause();
 		}
 	}
-
+	
+/*
 	@Test
+
 	public void testDownloadFile() throws Throwable {
 		URL testURL = new URL(
 				"http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/campings_de_euskadi/opendata/alojamientos.xml");
 		String testPath = "test\\testFile.txt";
-		assertTrue(fileManager.downloadFile(testURL, testPath));
+		assertTrue(fileManager.downloadFile(testPath, testURL));
 
 		testURL = new URL(
 				"http://opendata.euskadi.eus/contnidos/ds_recursos_turisticos/campings_de_euskadi/opendata/alojamientos.xml");
 		testPath = "test\\testFile.txt";
-		assertFalse(fileManager.downloadFile(testURL, testPath));
+		assertFalse(fileManager.downloadFile(testPath, testURL));
 	}
 
 	@Test
@@ -196,16 +197,8 @@ public class GestorFicherosTest {
 		assertTrue(fileManager.writeFile(testPath, append, lines));
 
 	}
-
-	@Test
-	public void testReadFile() throws Throwable {
-		String testPath = "test\\testRead.txt";
-		ArrayList<String> expected = new ArrayList<String>(Arrays.asList("line1", "line2"));
-		fileManager.writeFile(testPath, false, expected);
-		ArrayList<String> actual = fileManager.readFile(testPath);
-		assertEquals(expected, actual);
-	}
-
+*/
+	
 	@Test
 	public void testCloseFile() {
 		fileManager.closeFile();

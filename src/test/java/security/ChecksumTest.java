@@ -1,6 +1,8 @@
-package util.file;
+package security;
 
 import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,15 +10,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ChecksumTest {
+import file.FileManager;
 
-	private static Checksum tester;
+public class ChecksumTest {
 
 	@BeforeClass
 	public static void setup() throws Exception {
-		tester = new Checksum();
-		new GestorFicheros().writeFile("test\\testFile.txt", false, "testText");
-
 	}
 
 	@Before
@@ -30,14 +29,14 @@ public class ChecksumTest {
 	}
 
 	@AfterClass
-	public static void cleanup() {
-		new GestorFicheros().deleteFile("test");
+	public static void cleanup() throws IOException {
+		new FileManager().deleteFile("test");
 	}
 
 	@Test
 	public void testGetMD5Checksum() throws Exception {
 		String expected = "3CE35752AF8B291E5EDE2EDD8ED3E98A";
-		String actual = tester.getMD5Checksum("test\\testFile.txt");
+		String actual = Checksum.getMD5Checksum("test\\testFile.txt");
 		assertEquals(expected, actual.toUpperCase());
 	}
 

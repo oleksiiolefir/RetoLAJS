@@ -4,12 +4,12 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-import util.file.AllTestsUtilFile;
+import file.AllTestsFile;
 
 public class TestRunner {
 
 	public static void main(String[] args) {
-		Result result = JUnitCore.runClasses(AllTestsUtilFile.class);
+		Result result = JUnitCore.runClasses(AllTestsFile.class);
 		for (Failure failure : result.getFailures()) 
 			System.out.println(failure.toString());
 		
