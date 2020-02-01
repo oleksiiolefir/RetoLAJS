@@ -15,19 +15,19 @@ import logger.LogLevel;
 import logger.Logger;
 import security.Checksum;
 
-public class DataGetter {
+public class UrlReader {
 
 	private XmlFileManager xmlFileManager;
 
-	public DataGetter() {
+	public UrlReader() {
 		xmlFileManager = new XmlFileManager();
 	}
 
-	public ArrayList<Alojamiento> getData(String url, String filepath) {
+	public ArrayList<Alojamiento> getAlojamientos(String url, String filepath) {
 		if(cacheUrl(url, filepath)) {
 			try {
 				xmlFileManager.downloadFile(filepath, new URL(url));
-				return readXml(filepath);
+				return getXmlData(filepath, "row");
 			}catch (IOException e) {
 				Logger.getInstance().log(e.getLocalizedMessage(), LogLevel.WARNING, getClass(), e);
 				return null;
@@ -62,9 +62,9 @@ public class DataGetter {
 		}
 	}
 
-	private ArrayList<Alojamiento> readXml(String filepath) {
+	private ArrayList<Alojamiento> getXmlData(String filepath, String tag) {
 		try {
-			ArrayList<Element> elementos = xmlFileManager.getNodeListElements(filepath, "row");
+			ArrayList<Element> elementos = xmlFileManager.getNodeListElements(filepath, tag);
 			ArrayList<Alojamiento> data = new ArrayList<Alojamiento>();
 			for (Element element : elementos)
 				data.add(getAlojamiento(element));

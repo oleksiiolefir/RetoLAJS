@@ -17,6 +17,7 @@ public class HibernateManager {
 
 	private static SessionFactory sessionFactory;
 	private static Configuration configuration;
+	private static Session session;
 
 	private static void loadConfigFile() {
 		try {
@@ -38,7 +39,7 @@ public class HibernateManager {
 			try {
 				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 			} catch (HibernateException e) {
-				throw new HibernateException("Configuracion y/o mapping erroneo", e);
+				throw new HibernateException("Configuracion y/o mapping erroneo o servidor no disponible", e);
 			}
 		}
 	}
@@ -58,10 +59,22 @@ public class HibernateManager {
 
 	public static void insertData(ArrayList<?> data) throws Exception {
 		try {
-			Session session = sessionFactory.openSession();
+			session = sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
 			for (Object object : data)
 				session.saveOrUpdate(object);
+			tx.commit();
+			session.close();
+		} catch (Exception e) {
+			throw new Exception("Error al insertar datos en BD", e);
+		}
+	}
+	
+	public static void insertData(Object data) throws Exception {
+		try {
+			session = sessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			session.saveOrUpdate(data);
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
