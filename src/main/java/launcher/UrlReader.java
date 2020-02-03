@@ -21,7 +21,7 @@ public class UrlReader {
 
 	public UrlReader() {
 		xmlFileManager = new XmlFileManager();
-	}
+	} 
 
 	public ArrayList<Alojamiento> getAlojamientos(String url, String filepath) {
 		if(cacheUrl(url, filepath)) {
@@ -42,7 +42,7 @@ public class UrlReader {
 		} catch (IOException e) {
 			Logger.getInstance().log("No se pudo crear checksum", LogLevel.WARNING, getClass(), e);
 			return false;
-		}	
+		}
 		try {
 			String fileChecksum = Checksum.getMD5Checksum(filepath);
 			return compareChecksums(urlChecksum, fileChecksum);

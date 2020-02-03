@@ -2,41 +2,31 @@ package security;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import file.FileManager;
-
 public class ChecksumTest {
+	
+	static File testFile = new File("testFile.txt");
 
 	@BeforeClass
-	public static void setup() throws Exception {
-	}
-
-	@Before
-	public void set() {
-
-	}
-
-	@After
-	public void clean() {
-
+	public static void setup() throws IOException { 
+		testFile.createNewFile();
 	}
 
 	@AfterClass
 	public static void cleanup() throws IOException {
-		new FileManager().deleteFile("test");
+		testFile.delete();
 	}
 
 	@Test
 	public void testGetMD5Checksum() throws Exception {
-		String expected = "3CE35752AF8B291E5EDE2EDD8ED3E98A";
-		String actual = Checksum.getMD5Checksum("test\\testFile.txt");
+		String expected = "D41D8CD98F00B204E9800998ECF8427E";
+		String actual = Checksum.getMD5Checksum("testFile.txt");
 		assertEquals(expected, actual.toUpperCase());
 	}
 

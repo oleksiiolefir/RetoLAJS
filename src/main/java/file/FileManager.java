@@ -16,23 +16,25 @@ public class FileManager {
 	protected BufferedWriter bfWriter;
 
 	protected void openFile(String filepath) throws IOException {
-		file = new File(filepath);
-		if (!file.exists()) 
-			createFile();
+		if (filepath != null) {
+			file = new File(filepath);
+			if (!file.exists())
+				createFile();
+		}
 	}
 
 	private void createFile() throws IOException {
 		try {
 			if (!file.getParentFile().exists())
 				file.getParentFile().mkdirs();
-			file.createNewFile();			
+			file.createNewFile();
 		} catch (IOException e) {
-			throw new IOException("Error al crear archivo " + file.getPath() , e);
+			throw new IOException("Error al crear archivo " + file.getPath(), e);
 		}
 	}
 
 	protected void loadReader(URL url) throws IOException {
-		if (url != null)
+		if (url != null && file != null)
 			try {
 				bfReader = new BufferedReader(new InputStreamReader(url.openStream()));
 			} catch (IOException e) {
@@ -42,21 +44,23 @@ public class FileManager {
 	}
 
 	protected void loadFileReader() throws IOException {
-		try {
-			bfReader = new BufferedReader(new FileReader(file));
-		} catch (IOException e) {
-			bfReader = null;
-			throw new IOException("Error al cargar bfReader", e);
-		}
+		if (file != null)
+			try {
+				bfReader = new BufferedReader(new FileReader(file));
+			} catch (IOException e) {
+				bfReader = null;
+				throw new IOException("Error al cargar bfReader", e);
+			}
 	}
 
 	protected void loadFileWriter(boolean append) throws IOException {
-		try {
-			bfWriter = new BufferedWriter(new FileWriter(file, append));
-		} catch (IOException e) {
-			bfWriter = null;
-			throw new IOException("Error al cargar bfWriter", e);
-		}
+		if (file != null)
+			try {
+				bfWriter = new BufferedWriter(new FileWriter(file, append));
+			} catch (IOException e) {
+				bfWriter = null;
+				throw new IOException("Error al cargar bfWriter", e);
+			}
 	}
 
 	public void downloadFile(String filepath, URL url) throws IOException {
@@ -80,10 +84,10 @@ public class FileManager {
 		bfReader = null;
 		bfWriter = null;
 	}
-	
+
 	public void deleteFile(String filepath) throws IOException {
 		file = new File(filepath);
-		if(file.exists()) {
+		if (file.exists()) {
 			try {
 				if (file.isDirectory())
 					deleteDirFiles(filepath);
@@ -93,13 +97,13 @@ public class FileManager {
 			}
 		}
 	}
-	
-	private void deleteDirFiles(String filepath) throws IOException{
+
+	private void deleteDirFiles(String filepath) throws IOException {
 		File tempFile = new File(filepath);
 		for (File file : tempFile.listFiles()) {
 			if (file.isDirectory())
 				deleteDirFiles(file.getPath());
-			file.delete();					
+			file.delete();
 		}
 	}
 

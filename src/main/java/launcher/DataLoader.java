@@ -19,7 +19,7 @@ public class DataLoader {
 	private void loadData(ArrayList<String> urls) throws Exception {
 		for(String url : urls) {
 			String xmlFilepath = makeFilepath(Constants.XML_DIRPATH, url, ".xml");
-			ArrayList<Alojamiento> alojamientos =new UrlReader().getAlojamientos(url, xmlFilepath);
+			ArrayList<Alojamiento> alojamientos = new UrlReader().getAlojamientos(url, xmlFilepath);
 			
 			if(alojamientos!=null) {
 				String jsonFilepath = makeFilepath(Constants.JSON_DIRPATH , url , ".json");
@@ -27,7 +27,7 @@ public class DataLoader {
 				HibernateManager.insertData(alojamientos);
 			}
 		}
-	}
+	} 
 	
 	private String makeFilepath(String dirpath, String url, String extension) {
 		String[] urlSplit = url.split("/");
